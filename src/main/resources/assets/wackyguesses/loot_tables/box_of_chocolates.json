@@ -1,0 +1,38 @@
+{
+  "pools": [
+    {
+      "name":"Box of Chocolates",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "weight": 1,
+          "name": "wackyguesses:item_rectangular_chocolate",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 7,
+                "max": 15
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 1,
+          "name": "wackyguesses:item_spherical_chocolate",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 7,
+                "max": 15
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

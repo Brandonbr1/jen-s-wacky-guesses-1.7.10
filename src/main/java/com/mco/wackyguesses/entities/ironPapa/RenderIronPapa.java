@@ -1,6 +1,4 @@
-package com.mco.wackyguesses.entities.patHead;
-
-import org.lwjgl.opengl.GL11;
+package com.mco.wackyguesses.entities.ironPapa;
 
 import com.mco.wackyguesses.Wacky;
 
@@ -8,23 +6,16 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderPatHead extends RenderLiving
+public class RenderIronPapa extends RenderLiving
 {
 
-    private static final String MOB_TEXTURE = ":textures/entities/pat_head.png";
+    private static final String MOB_TEXTURE = ":textures/entities/iron_papa.png";
 
-    public RenderPatHead() {
-        super(new ModelPatHead(), 1.0f);
-    }
-
-    @Override
-    protected void preRenderCallback(EntityLivingBase entityLiving, float partialTickTime)
-    {
-        GL11.glRotatef(-90, 0, 1, 0);
+    public RenderIronPapa() {
+        super(new ModelIronPapa(), 1.0f);
     }
 
 

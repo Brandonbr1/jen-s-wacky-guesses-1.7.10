@@ -31,7 +31,8 @@ public class WackyItemMonsterPlacer extends ItemMonsterPlacer
     @SideOnly(Side.CLIENT)
     private IIcon theIcon;
 
-    public WackyItemMonsterPlacer() {
+    public WackyItemMonsterPlacer()
+    {
         this.setHasSubtypes(true);
         this.setCreativeTab(Wacky.wackyTab);
         this.setUnlocalizedName("monsterPlacer");

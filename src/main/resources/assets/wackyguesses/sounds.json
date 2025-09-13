@@ -1,0 +1,31 @@
+{
+  "entity.octobot.fire": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.octobot.fire", "stream": true}],
+    "subtitle": "entity.octobot.fire"},
+
+  "entity.float_bee_gunner.ambient": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.float_bee_gunner.ambient", "stream": true}],
+    "subtitle": "entity.float_bee_gunner.ambient"},
+
+  "entity.float_bee_gunner.fire": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.float_bee_gunner.fire", "stream": true}],
+    "subtitle": "entity.float_bee_gunner.fire"},
+
+  "entity.cloud.screech": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.cloud.screech", "stream": true}],
+    "subtitle": "entity.cloud.screech"},
+
+  "entity.cloud.charge": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.cloud.charge", "stream": true}],
+    "subtitle": "entity.cloud.charge"},
+
+  "entity.pepper.fire": {
+    "category:": "hostile",
+    "sounds": [{"name": "wackyguesses:entity.pepper.fire", "stream": true}],
+    "subtitle": "entity.pepper.fire"}
+}

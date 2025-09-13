@@ -1,4 +1,4 @@
-package com.mco.wackyguesses.entities.patHead;
+package com.mco.wackyguesses.entities.egg;
 
 import org.lwjgl.opengl.GL11;
 
@@ -12,25 +12,25 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderPatHead extends RenderLiving
+public class RenderEgg extends RenderLiving
 {
 
-    private static final String MOB_TEXTURE = ":textures/entities/pat_head.png";
+    private static final String MOB_TEXTURE = ":textures/entities/egg.png";
 
-    public RenderPatHead() {
-        super(new ModelPatHead(), 1.0f);
+    public RenderEgg() {
+        super(new ModelEgg(), 1.0f);
     }
 
     @Override
     protected void preRenderCallback(EntityLivingBase entityLiving, float partialTickTime)
     {
-        GL11.glRotatef(-90, 0, 1, 0);
+        GL11.glScalef(3F, 3F, 3F);
     }
 
 
     @Override
     protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-        // TODO Auto-generated method stub
+
         return new ResourceLocation(Wacky.MODID + MOB_TEXTURE);
     }
 

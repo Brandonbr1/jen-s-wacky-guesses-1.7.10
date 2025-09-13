@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "e e",
+    "e e"
+  ],
+  "key":
+  {
+    "e":
+    {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result":
+  {
+    "item": "wackyguesses:emerald_boots",
+    "count": 1
+  }
+}
