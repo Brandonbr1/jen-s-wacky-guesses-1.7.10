@@ -35,6 +35,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class Wacky {
 
     public static final String MODID = "wackyguesses";
+    public static final String MODID_PREFIX = "wackyguesses:";
     public static final String NAME = "Jen's Wacky Guesses";
     public static final String VERSION = "@VERSION@";
 
@@ -49,7 +50,7 @@ public class Wacky {
     public void preInit(FMLPreInitializationEvent event) {
         Config.load(event);
         monsterSpawner = new WackyItemMonsterPlacer();
-        itemDorito = new ItemFood(1, 1, false).setCreativeTab(wackyTab).setUnlocalizedName("item_dorito");
+        itemDorito = new ItemFood(1, 1, false).setCreativeTab(wackyTab).setUnlocalizedName("item_dorito").setTextureName(Wacky.MODID_PREFIX + "item_dorito");
 
         this.addItemName(monsterSpawner, "Spawn");
         this.addItemName(itemDorito, "Dorito");
