@@ -1,5 +1,7 @@
 package com.mco.wackyguesses.entities.floatBeeGunner;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -9,6 +11,7 @@ import net.minecraft.util.MathHelper;
  * ModelFloatBeeGunner - TheMCO
  * Created using Tabula 4.1.1
  */
+@SideOnly(Side.CLIENT)
 public class ModelFloatBeeGunner extends ModelBase {
     public ModelRenderer BoatBase;
     public ModelRenderer BeeTorso;
@@ -196,6 +199,7 @@ public class ModelFloatBeeGunner extends ModelBase {
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.setRotationAngles(f1, f2, f3, f4, f5, f, entity);
         this.BoatBase.render(f5);
         this.BeeTorso.render(f5);
     }

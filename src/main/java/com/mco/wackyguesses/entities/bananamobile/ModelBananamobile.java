@@ -255,6 +255,7 @@ public class ModelBananamobile extends ModelBase {
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.setRotationAngles(f1, f2, f3, f4, f5, f, entity);
         this.MainBody.render(f5);
     }
 

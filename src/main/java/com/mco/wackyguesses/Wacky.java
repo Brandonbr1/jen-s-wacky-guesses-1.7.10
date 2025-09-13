@@ -1,6 +1,9 @@
 package com.mco.wackyguesses;
 
 import com.mco.wackyguesses.entities.bananamobile.EntityBananamobile;
+import com.mco.wackyguesses.entities.chocolate.box.EntityChocoBox;
+import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
+import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
 import com.mco.wackyguesses.entities.dorito.EntityDorito;
 import com.mco.wackyguesses.entities.dorito.doritoThrowable.EntityDoritoThrowable;
 import com.mco.wackyguesses.entities.egg.EntityEgg;
@@ -62,6 +65,11 @@ public class Wacky {
         this.addMob(EntityBananamobile.class, true, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         this.addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         this.addMob(EntityBee.class, true, "Bee", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityRectangularChoco.class, true, "Rectangular Chocolate", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityChocoBox.class, true, "Chocolate Boss", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+
 
         this.addNonLivingMob(EntityDoritoThrowable.class, "Dorito");
         this.addNonLivingMob(EntityBullet.class, "Bullet");

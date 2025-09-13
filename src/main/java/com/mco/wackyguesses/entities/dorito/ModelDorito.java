@@ -338,6 +338,7 @@ public class ModelDorito extends ModelBase {
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.setRotationAngles(f1, f2, f3, f4, f5, f, entity);
         this.ChipW.render(f5);
         this.RLeg.render(f5);
         this.ChipQ.render(f5);

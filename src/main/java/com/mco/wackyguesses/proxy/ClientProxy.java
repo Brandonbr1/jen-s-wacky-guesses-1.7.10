@@ -3,6 +3,12 @@ package com.mco.wackyguesses.proxy;
 import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.bananamobile.EntityBananamobile;
 import com.mco.wackyguesses.entities.bananamobile.RenderBananamobile;
+import com.mco.wackyguesses.entities.chocolate.box.EntityChocoBox;
+import com.mco.wackyguesses.entities.chocolate.box.RenderChocoBox;
+import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
+import com.mco.wackyguesses.entities.chocolate.rectangle.RenderRectangularChoco;
+import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
+import com.mco.wackyguesses.entities.chocolate.sphere.RenderSphericalChoco;
 import com.mco.wackyguesses.entities.dorito.EntityDorito;
 import com.mco.wackyguesses.entities.dorito.RenderDorito;
 import com.mco.wackyguesses.entities.dorito.doritoThrowable.EntityDoritoThrowable;
@@ -39,6 +45,12 @@ public class ClientProxy extends CommonProxy {
         this.addRender(EntityBananamobile.class, new RenderBananamobile());
         this.addRender(EntityFloatBeeGunner.class, new RenderFloatBeeGunner());
         this.addRender(EntityBee.class, new RenderBee());
+
+
+        // choco variants
+        this.addRender(EntitySphericalChoco.class, new RenderSphericalChoco());
+        this.addRender(EntityRectangularChoco.class, new RenderRectangularChoco());
+        this.addRender(EntityChocoBox.class, new RenderChocoBox());
     }
 
 
