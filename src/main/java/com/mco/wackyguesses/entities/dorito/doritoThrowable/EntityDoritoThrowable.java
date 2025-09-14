@@ -1,6 +1,6 @@
 package com.mco.wackyguesses.entities.dorito.doritoThrowable;
 
-import com.mco.wackyguesses.source.WackyDamageSource;
+import com.mco.wackyguesses.source.WackyDamages;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -34,7 +34,7 @@ public class EntityDoritoThrowable extends EntityThrowable
         if (p_70184_1_.entityHit != null)
         {
             byte b0 = 1;
-            p_70184_1_.entityHit.attackEntityFrom(WackyDamageSource.dorito, b0);
+            p_70184_1_.entityHit.attackEntityFrom(WackyDamages.dorito, b0);
         }
 
         for (int i = 0; i < 8; ++i)

@@ -1,5 +1,7 @@
 package com.mco.wackyguesses.proxy;
 
+import com.mco.wackyguesses.entities.explodaCow.EntityExplodaCow;
+
 public class CommonProxy {
 
     public CommonProxy() {
@@ -9,5 +11,6 @@ public class CommonProxy {
     public void registerRenderers() {
         // NO-OP
     }
+
 
 }

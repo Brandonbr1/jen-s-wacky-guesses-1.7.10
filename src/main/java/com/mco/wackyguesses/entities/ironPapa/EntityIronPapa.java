@@ -35,7 +35,7 @@ public class EntityIronPapa extends EntityMob
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(510.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(150.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.15D);
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
     }

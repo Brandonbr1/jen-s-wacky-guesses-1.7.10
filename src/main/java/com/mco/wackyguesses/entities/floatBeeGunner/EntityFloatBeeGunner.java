@@ -30,7 +30,7 @@ public class EntityFloatBeeGunner extends EntityMob implements IBossDisplayData,
         this.setSize(2F, 2F);
         this.experienceValue = 50;
         this.getNavigator().setCanSwim(true);
-        this.tasks.addTask(1, new EntityAIArrowAttack(this, 1.25D, 1, 20.0F));
+        this.tasks.addTask(1, new EntityAIArrowAttack(this, 1.25D, 10, 20.0F));
         this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(3, new EntityAILookIdle(this));

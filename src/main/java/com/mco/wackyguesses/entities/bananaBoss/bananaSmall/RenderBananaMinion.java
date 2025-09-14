@@ -1,8 +1,9 @@
-package com.mco.wackyguesses.entities.chocolate.box;
+package com.mco.wackyguesses.entities.bananaBoss.bananaSmall;
 
 import org.lwjgl.opengl.GL11;
 
 import com.mco.wackyguesses.Wacky;
+import com.mco.wackyguesses.entities.bananaBoss.ModelBanana;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -12,24 +13,24 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderChocoBox extends RenderLiving
+public class RenderBananaMinion extends RenderLiving
 {
-    private static final String MOB_TEXTURE = ":textures/entities/choco_box.png";
+    private static final String MOB_TEXTURE = ":textures/entities/banana_boss.png";
 
-    public RenderChocoBox() {
-        super(new ModelChocoBox(), 1.0f);
-        // TODO Auto-generated constructor stub
+    public RenderBananaMinion()
+    {
+        super(new ModelBanana(), 0.25f);
     }
 
     @Override
     protected void preRenderCallback(EntityLivingBase entityLiving, float partialTickTime)
     {
-        GL11.glScalef(3F, 3F, 3F);
+        super.preRenderCallback(entityLiving, partialTickTime);
+        GL11.glScalef(0.37F, 0.37F, 0.37F);
     }
 
     @Override
     protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-        // TODO Auto-generated method stub
         return new ResourceLocation(Wacky.MODID + MOB_TEXTURE);
     }
 
