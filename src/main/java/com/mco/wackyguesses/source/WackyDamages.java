@@ -4,7 +4,6 @@ import net.minecraft.util.DamageSource;
 
 public class WackyDamages extends DamageSource
 {
-
     public WackyDamages(String name)
     {
         super(name);
@@ -14,6 +13,9 @@ public class WackyDamages extends DamageSource
     public static DamageSource bullet  = (new WackyDamages("bullet"));
     public static DamageSource banana  = (new WackyDamages("banana"));
     public static DamageSource octobot  = (new WackyDamages("octo"));
+    public static DamageSource WBARROW = (new WackyDamages("wheelBarrow"));
+    public static DamageSource URCHIN = (new WackyDamages("urchin"));
+    public static DamageSource SPIKE = (new WackyDamages("spike"));
 
 
 }

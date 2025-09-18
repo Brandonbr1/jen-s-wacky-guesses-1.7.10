@@ -34,6 +34,16 @@ import com.mco.wackyguesses.entities.octobot.EntityOctobot;
 import com.mco.wackyguesses.entities.octobot.RenderOctobot;
 import com.mco.wackyguesses.entities.patHead.EntityPatHead;
 import com.mco.wackyguesses.entities.patHead.RenderPatHead;
+import com.mco.wackyguesses.entities.skeleGoose.EntityGoose;
+import com.mco.wackyguesses.entities.skeleGoose.RenderGoose;
+import com.mco.wackyguesses.entities.sunUrchin.EntitySunUrchin;
+import com.mco.wackyguesses.entities.sunUrchin.RenderSunUrchin;
+import com.mco.wackyguesses.entities.sunUrchin.projectile.EntitySunSpike;
+import com.mco.wackyguesses.entities.sunUrchin.projectile.RenderSunSpike;
+import com.mco.wackyguesses.entities.wheelbarrow.EntityWheelbarrow;
+import com.mco.wackyguesses.entities.wheelbarrow.RenderWheelbarrow;
+import com.mco.wackyguesses.entities.zombieJar.EntityZombieJar;
+import com.mco.wackyguesses.entities.zombieJar.RenderZombieJar;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.renderer.entity.Render;
@@ -70,17 +80,21 @@ public class ClientProxy extends CommonProxy {
         this.addRender(EntityChocoBox.class, new RenderChocoBox());
 
         this.addRender(EntityExplodaCow.class, new RenderExplodaCow());
-
+        this.addRender(EntityZombieJar.class, new RenderZombieJar());
+        this.addRender(EntityWheelbarrow.class, new RenderWheelbarrow());
+        this.addRender(EntityGoose.class, new RenderGoose());
+        this.addRender(EntitySunUrchin.class, new RenderSunUrchin());
 
         this.addRender(EntityDoritoThrowable.class, new RenderSnowball(Wacky.itemDorito));
         this.addRender(EntityBananaThrowable.class, new RenderSnowball(Wacky.itemBanana));
         this.addRender(EntityBullet.class, new RenderSnowball(Wacky.itemBullet));
+        this.addRender(EntitySunSpike.class, new RenderSunSpike());
     }
 
 
-    private void addRender(Class<? extends Entity > c, Render r)
+    private void addRender(Class<? extends Entity > clazz, Render render)
     {
-        RenderingRegistry.registerEntityRenderingHandler(c, r);
+        RenderingRegistry.registerEntityRenderingHandler(clazz, render);
     }
 
 

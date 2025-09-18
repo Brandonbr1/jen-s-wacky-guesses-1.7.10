@@ -1,0 +1,207 @@
+package com.mco.wackyguesses.entities.skeleGoose;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+@SideOnly(Side.CLIENT)
+public class ModelGoose extends ModelBase {
+    public ModelRenderer BodyA;
+    public ModelRenderer BodyB;
+    public ModelRenderer BodyC;
+    public ModelRenderer BodyD;
+    public ModelRenderer LWingA;
+    public ModelRenderer RWingA;
+    public ModelRenderer Tail;
+    public ModelRenderer NeckA;
+    public ModelRenderer LLegA;
+    public ModelRenderer RLegA;
+    public ModelRenderer LWingB;
+    public ModelRenderer RWingB;
+    public ModelRenderer NeckB;
+    public ModelRenderer NeckC;
+    public ModelRenderer NeckD;
+    public ModelRenderer NeckE;
+    public ModelRenderer NeckF;
+    public ModelRenderer NeckG;
+    public ModelRenderer NeckH;
+    public ModelRenderer NeckI;
+    public ModelRenderer NeckJ;
+    public ModelRenderer HeadA;
+    public ModelRenderer HeadB;
+    public ModelRenderer HeadC;
+    public ModelRenderer BottomBeak;
+    public ModelRenderer TopBeak;
+    public ModelRenderer LLegB;
+    public ModelRenderer LFlipper;
+    public ModelRenderer RLegB;
+    public ModelRenderer RFlipper;
+
+    public ModelGoose() {
+        this.textureWidth = 128;
+        this.textureHeight = 128;
+        this.RWingB = new ModelRenderer(this, 45, 2);
+        this.RWingB.mirror = true;
+        this.RWingB.setRotationPoint(7.0F, 0.0F, 0.0F);
+        this.RWingB.addBox(0.0F, 0.0F, -7.0F, 7, 0, 14, 0.0F);
+        this.setRotateAngle(this.RWingB, 0.0F, 0.0F, 0.5934119F);
+        this.Tail = new ModelRenderer(this, -4, 9);
+        this.Tail.setRotationPoint(7.0F, 5.0F, 19.0F);
+        this.Tail.addBox(-4.0F, 0.0F, 0.0F, 5, 0, 4, 0.0F);
+        this.LFlipper = new ModelRenderer(this, -4, 44);
+        this.LFlipper.setRotationPoint(0.0F, 5.0F, 0.0F);
+        this.LFlipper.addBox(-1.0F, 0.0F, -3.0F, 3, 0, 4, 0.0F);
+        this.LLegA = new ModelRenderer(this, 0, 30);
+        this.LLegA.setRotationPoint(0.0F, 10.0F, 10.0F);
+        this.LLegA.addBox(-2.0F, -2.0F, -2.0F, 3, 3, 3, 0.0F);
+        this.NeckG = new ModelRenderer(this, 40, 30);
+        this.NeckG.setRotationPoint(0.0F, -0.3F, -1.9F);
+        this.NeckG.addBox(0.0F, -1.0F, -3.0F, 2, 2, 1, 0.0F);
+        this.setRotateAngle(this.NeckG, 0.13665928F, 0.0F, 0.0F);
+        this.RFlipper = new ModelRenderer(this, -4, 44);
+        this.RFlipper.setRotationPoint(0.0F, 5.0F, 0.0F);
+        this.RFlipper.addBox(-1.0F, 0.0F, -3.0F, 3, 0, 4, 0.0F);
+        this.NeckA = new ModelRenderer(this, 40, 30);
+        this.NeckA.setRotationPoint(5.0F, 5.0F, -2.0F);
+        this.NeckA.addBox(0.0F, -1.0F, 0.0F, 2, 2, 1, 0.0F);
+        this.HeadB = new ModelRenderer(this, 75, 10);
+        this.HeadB.setRotationPoint(1.5F, 0.5F, -0.5F);
+        this.HeadB.addBox(-2.0F, 0.0F, -2.0F, 5, 2, 3, 0.0F);
+        this.HeadA = new ModelRenderer(this, 75, 16);
+        this.HeadA.setRotationPoint(-1.0F, -1.5F, -6.0F);
+        this.HeadA.addBox(0.0F, 0.0F, -3.0F, 4, 3, 4, 0.0F);
+        this.BodyC = new ModelRenderer(this, 0, 60);
+        this.BodyC.setRotationPoint(1.0F, -1.0F, 2.0F);
+        this.BodyC.addBox(0.0F, 0.0F, 0.0F, 10, 12, 14, 0.0F);
+        this.NeckI = new ModelRenderer(this, 40, 30);
+        this.NeckI.setRotationPoint(0.0F, -1.2F, -0.9F);
+        this.NeckI.addBox(0.0F, -1.0F, -3.0F, 2, 2, 1, 0.0F);
+        this.setRotateAngle(this.NeckI, 0.56758106F, 0.0F, 0.0F);
+        this.LWingB = new ModelRenderer(this, 45, 2);
+        this.LWingB.setRotationPoint(-6.0F, 1.0F, 0.0F);
+        this.LWingB.addBox(-7.0F, 0.0F, -7.0F, 7, 0, 14, 0.0F);
+        this.setRotateAngle(this.LWingB, 0.0F, 0.0F, -0.5934119F);
+        this.LLegB = new ModelRenderer(this, 0, 37);
+        this.LLegB.setRotationPoint(-1.0F, 1.0F, -1.0F);
+        this.LLegB.addBox(0.0F, 0.0F, 0.0F, 1, 5, 1, 0.0F);
+        this.RLegA = new ModelRenderer(this, 0, 30);
+        this.RLegA.setRotationPoint(13.0F, 10.0F, 10.0F);
+        this.RLegA.addBox(-2.0F, -2.0F, -2.0F, 3, 3, 3, 0.0F);
+        this.HeadC = new ModelRenderer(this, 76, 3);
+        this.HeadC.setRotationPoint(3.5F, 0.5F, -0.5F);
+        this.HeadC.addBox(-1.0F, 0.0F, -2.0F, 4, 3, 3, 0.0F);
+        this.setRotateAngle(this.HeadC, 0.0F, 0.0F, 1.5707964F);
+        this.NeckE = new ModelRenderer(this, 40, 39);
+        this.NeckE.setRotationPoint(0.0F, -0.2F, -3.4F);
+        this.NeckE.addBox(0.0F, -1.0F, -3.0F, 2, 2, 4, 0.0F);
+        this.setRotateAngle(this.NeckE, -0.27314404F, 0.0F, 0.0F);
+        this.NeckF = new ModelRenderer(this, 49, 29);
+        this.NeckF.setRotationPoint(0.0F, 0.1F, -3.4F);
+        this.NeckF.addBox(0.0F, -1.0F, -4.0F, 2, 2, 5, 0.0F);
+        this.setRotateAngle(this.NeckF, 0.14014994F, 0.0F, 0.0F);
+        this.RWingA = new ModelRenderer(this, 30, 2);
+        this.RWingA.mirror = true;
+        this.RWingA.setRotationPoint(12.0F, 1.0F, 9.0F);
+        this.RWingA.addBox(0.0F, 0.0F, -7.0F, 7, 0, 14, 0.0F);
+        this.RLegB = new ModelRenderer(this, 0, 37);
+        this.RLegB.setRotationPoint(-1.0F, 1.0F, -1.0F);
+        this.RLegB.addBox(0.0F, 0.0F, 0.0F, 1, 5, 1, 0.0F);
+        this.BodyB = new ModelRenderer(this, 0, 30);
+        this.BodyB.setRotationPoint(1.0F, 1.0F, -1.0F);
+        this.BodyB.addBox(0.0F, 0.0F, 0.0F, 10, 8, 20, 0.0F);
+        this.BottomBeak = new ModelRenderer(this, 0, 0);
+        this.BottomBeak.setRotationPoint(1.0F, 2.0F, -3.2F);
+        this.BottomBeak.addBox(0.0F, -0.5F, -1.7F, 2, 1, 2, 0.0F);
+        this.setRotateAngle(this.BottomBeak, 0.11047934F, 0.0F, 0.0F);
+        this.NeckD = new ModelRenderer(this, 40, 39);
+        this.NeckD.setRotationPoint(0.0F, -0.4F, -1.4F);
+        this.NeckD.addBox(0.0F, -1.0F, -3.0F, 2, 2, 4, 0.0F);
+        this.setRotateAngle(this.NeckD, -0.62901664F, 0.0F, 0.0F);
+        this.BodyA = new ModelRenderer(this, 0, 0);
+        this.BodyA.setRotationPoint(-6.0F, 8.0F, -9.0F);
+        this.BodyA.addBox(0.0F, 0.0F, 0.0F, 12, 10, 18, 0.0F);
+        this.NeckC = new ModelRenderer(this, 40, 34);
+        this.NeckC.setRotationPoint(0.0F, -0.3F, -0.5F);
+        this.NeckC.addBox(0.0F, -1.0F, -1.0F, 2, 2, 2, 0.0F);
+        this.setRotateAngle(this.NeckC, -0.3700098F, 0.0F, 0.0F);
+        this.BodyD = new ModelRenderer(this, 0, 90);
+        this.BodyD.setRotationPoint(2.0F, 2.0F, 2.0F);
+        this.BodyD.addBox(-3.0F, 0.0F, 0.0F, 14, 6, 14, 0.0F);
+        this.NeckH = new ModelRenderer(this, 40, 30);
+        this.NeckH.setRotationPoint(0.0F, -0.6F, -0.9F);
+        this.NeckH.addBox(0.0F, -1.0F, -3.0F, 2, 2, 1, 0.0F);
+        this.setRotateAngle(this.NeckH, 0.31258848F, 0.0F, 0.0F);
+        this.TopBeak = new ModelRenderer(this, 0, 5);
+        this.TopBeak.setRotationPoint(1.0F, 0.9F, -3.0F);
+        this.TopBeak.addBox(0.0F, -0.5F, -1.9F, 2, 1, 2, 0.0F);
+        this.setRotateAngle(this.TopBeak, -0.09564404F, 0.0F, 0.0F);
+        this.NeckB = new ModelRenderer(this, 40, 30);
+        this.NeckB.setRotationPoint(0.0F, -0.3F, -0.5F);
+        this.NeckB.addBox(0.0F, -1.0F, 0.0F, 2, 2, 1, 0.0F);
+        this.setRotateAngle(this.NeckB, -0.3700098F, 0.0F, 0.0F);
+        this.NeckJ = new ModelRenderer(this, 40, 34);
+        this.NeckJ.setRotationPoint(0.0F, -2.1F, -0.2F);
+        this.NeckJ.addBox(0.0F, -1.0F, -5.0F, 2, 2, 2, 0.0F);
+        this.setRotateAngle(this.NeckJ, 0.6906268F, 0.0F, 0.0F);
+        this.LWingA = new ModelRenderer(this, 30, 2);
+        this.LWingA.setRotationPoint(-1.0F, 0.0F, 9.0F);
+        this.LWingA.addBox(-6.0F, 1.0F, -7.0F, 7, 0, 14, 0.0F);
+        this.RWingA.addChild(this.RWingB);
+        this.BodyA.addChild(this.Tail);
+        this.LLegB.addChild(this.LFlipper);
+        this.BodyA.addChild(this.LLegA);
+        this.NeckF.addChild(this.NeckG);
+        this.RLegB.addChild(this.RFlipper);
+        this.BodyA.addChild(this.NeckA);
+        this.HeadA.addChild(this.HeadB);
+        this.NeckJ.addChild(this.HeadA);
+        this.BodyA.addChild(this.BodyC);
+        this.NeckH.addChild(this.NeckI);
+        this.LWingA.addChild(this.LWingB);
+        this.LLegA.addChild(this.LLegB);
+        this.BodyA.addChild(this.RLegA);
+        this.HeadA.addChild(this.HeadC);
+        this.NeckD.addChild(this.NeckE);
+        this.NeckE.addChild(this.NeckF);
+        this.BodyA.addChild(this.RWingA);
+        this.RLegA.addChild(this.RLegB);
+        this.BodyA.addChild(this.BodyB);
+        this.HeadA.addChild(this.BottomBeak);
+        this.NeckC.addChild(this.NeckD);
+        this.NeckB.addChild(this.NeckC);
+        this.BodyA.addChild(this.BodyD);
+        this.NeckG.addChild(this.NeckH);
+        this.HeadA.addChild(this.TopBeak);
+        this.NeckA.addChild(this.NeckB);
+        this.NeckI.addChild(this.NeckJ);
+        this.BodyA.addChild(this.LWingA);
+    }
+
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.setRotationAngles(f,f1,f2,f3,f4,f5, entity);
+        this.BodyA.render(f5);
+    }
+
+    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
+
+    @Override
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+        //  ModelRenderer[] var10000 = new ModelRenderer[]{this.NeckA, this.NeckB, this.NeckC, this.NeckD, this.NeckE, this.NeckF, this.NeckG, this.NeckI, this.NeckJ};
+        this.HeadA.rotateAngleX = headPitch * 0.017453292F;
+        this.HeadA.rotateAngleY = netHeadYaw * 0.017453292F;
+        this.LLegA.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.RLegA.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
+        this.RWingA.rotateAngleZ = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.6F * limbSwingAmount;
+        this.RWingB.rotateAngleZ = MathHelper.cos(limbSwing * 0.6662F) * 1.6F * limbSwingAmount;
+        this.LWingA.rotateAngleZ = -MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.6F * limbSwingAmount;
+        this.LWingB.rotateAngleZ = -MathHelper.cos(limbSwing * 0.6662F) * 1.6F * limbSwingAmount;
+    }
+}

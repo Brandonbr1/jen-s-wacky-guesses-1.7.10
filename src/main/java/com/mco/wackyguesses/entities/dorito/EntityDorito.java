@@ -79,7 +79,6 @@ public class EntityDorito extends EntityMob implements IBossDisplayData, IRanged
     @Override
     public void attackEntityWithRangedAttack(EntityLivingBase target, float p_82196_2_)
     {
-        System.out.println("Shoot ");
         EntityDoritoThrowable entityDoritoThrowable = new EntityDoritoThrowable(this.worldObj, this);
         double d0 = target.posY + target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;

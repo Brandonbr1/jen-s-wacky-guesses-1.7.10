@@ -18,6 +18,11 @@ import com.mco.wackyguesses.entities.floatBeeGunner.bullet.EntityBullet;
 import com.mco.wackyguesses.entities.ironPapa.EntityIronPapa;
 import com.mco.wackyguesses.entities.octobot.EntityOctobot;
 import com.mco.wackyguesses.entities.patHead.EntityPatHead;
+import com.mco.wackyguesses.entities.skeleGoose.EntityGoose;
+import com.mco.wackyguesses.entities.sunUrchin.EntitySunUrchin;
+import com.mco.wackyguesses.entities.sunUrchin.projectile.EntitySunSpike;
+import com.mco.wackyguesses.entities.wheelbarrow.EntityWheelbarrow;
+import com.mco.wackyguesses.entities.zombieJar.EntityZombieJar;
 import com.mco.wackyguesses.handlers.Config;
 import com.mco.wackyguesses.item.WackyItemMonsterPlacer;
 import com.mco.wackyguesses.item.WackyList;
@@ -89,13 +94,21 @@ public class Wacky {
 
         this.addMob(EntityExplodaCow.class, true, "Exploda Cow", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-
         this.addMob(EntityOctobot.class, true, "OctoBot(W.I.P)", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityZombieJar.class, true, "Zombie Jar", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityWheelbarrow.class, true, "Wheel Barrow", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityGoose.class, true, "Skele Goose", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntitySunUrchin.class, true, "Sun Urchin", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
 
         this.addNonLivingMob(EntityDoritoThrowable.class, "Dorito");
         this.addNonLivingMob(EntityBullet.class, "Bullet");
         this.addNonLivingMob(EntityBananaThrowable.class, "Banana");
+        this.addNonLivingMob(EntitySunSpike.class, "SunSpike");
 
     }
 

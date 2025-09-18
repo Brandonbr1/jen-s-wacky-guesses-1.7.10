@@ -56,7 +56,7 @@ public class EntityExplodaCow extends EntityMob
     @Override
     public void onUpdate() {
 
-        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null)
+        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null && this.hasPath() != false)
         {
             this.explode();
         }

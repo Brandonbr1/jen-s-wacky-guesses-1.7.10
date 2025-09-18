@@ -1,10 +1,12 @@
-/* Decompiler 43ms, total 395ms, lines 116 */
 package com.mco.wackyguesses.entities.zombieJar;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@SideOnly(Side.CLIENT)
 public class ModelZombieJar extends ModelBase {
     public ModelRenderer Bottom;
     public ModelRenderer Left;
