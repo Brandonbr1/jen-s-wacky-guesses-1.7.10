@@ -23,6 +23,12 @@ import com.mco.wackyguesses.entities.egg.EntityEgg;
 import com.mco.wackyguesses.entities.egg.RenderEgg;
 import com.mco.wackyguesses.entities.explodaCow.EntityExplodaCow;
 import com.mco.wackyguesses.entities.explodaCow.RenderExplodaCow;
+import com.mco.wackyguesses.entities.fettucine.box.EntityBoxOfNoodles;
+import com.mco.wackyguesses.entities.fettucine.box.RenderBoxOfNoodles;
+import com.mco.wackyguesses.entities.fettucine.noodle.EntityFettuccineNoodle;
+import com.mco.wackyguesses.entities.fettucine.noodle.RenderFettuccineNoodle;
+import com.mco.wackyguesses.entities.fettucine.projectile.EntityNoodleProjectile;
+import com.mco.wackyguesses.entities.fettucine.projectile.RenderNoodleProjectile;
 import com.mco.wackyguesses.entities.floatBeeGunner.EntityFloatBeeGunner;
 import com.mco.wackyguesses.entities.floatBeeGunner.RenderFloatBeeGunner;
 import com.mco.wackyguesses.entities.floatBeeGunner.bee.EntityBee;
@@ -30,10 +36,17 @@ import com.mco.wackyguesses.entities.floatBeeGunner.bee.RenderBee;
 import com.mco.wackyguesses.entities.floatBeeGunner.bullet.EntityBullet;
 import com.mco.wackyguesses.entities.ironPapa.EntityIronPapa;
 import com.mco.wackyguesses.entities.ironPapa.RenderIronPapa;
+import com.mco.wackyguesses.entities.jupiter.EntityJupiter;
+import com.mco.wackyguesses.entities.jupiter.RenderJupiter;
+import com.mco.wackyguesses.entities.jupiter.asteroid.EntityAsteroid;
+import com.mco.wackyguesses.entities.jupiter.asteroid.RenderAsteroid;
 import com.mco.wackyguesses.entities.octobot.EntityOctobot;
 import com.mco.wackyguesses.entities.octobot.RenderOctobot;
 import com.mco.wackyguesses.entities.patHead.EntityPatHead;
 import com.mco.wackyguesses.entities.patHead.RenderPatHead;
+import com.mco.wackyguesses.entities.pepper.EntityPepperShaker;
+import com.mco.wackyguesses.entities.pepper.RenderPepperShaker;
+import com.mco.wackyguesses.entities.pepper.proj.EntityPepper;
 import com.mco.wackyguesses.entities.skeleGoose.EntityGoose;
 import com.mco.wackyguesses.entities.skeleGoose.RenderGoose;
 import com.mco.wackyguesses.entities.sunUrchin.EntitySunUrchin;
@@ -79,16 +92,28 @@ public class ClientProxy extends CommonProxy {
         this.addRender(EntityRectangularChoco.class, new RenderRectangularChoco());
         this.addRender(EntityChocoBox.class, new RenderChocoBox());
 
+        // Noodle Variants
+        this.addRender(EntityFettuccineNoodle.class, new RenderFettuccineNoodle());
+        this.addRender(EntityNoodleProjectile.class, new RenderNoodleProjectile());
+        this.addRender(EntityBoxOfNoodles.class, new RenderBoxOfNoodles());
+
         this.addRender(EntityExplodaCow.class, new RenderExplodaCow());
         this.addRender(EntityZombieJar.class, new RenderZombieJar());
         this.addRender(EntityWheelbarrow.class, new RenderWheelbarrow());
         this.addRender(EntityGoose.class, new RenderGoose());
         this.addRender(EntitySunUrchin.class, new RenderSunUrchin());
+        this.addRender(EntityJupiter.class, new RenderJupiter());
+
+        this.addRender(EntityPepper.class, new RenderSnowball(Wacky.itemPepper));
+        this.addRender(EntityPepperShaker.class, new RenderPepperShaker());
+
 
         this.addRender(EntityDoritoThrowable.class, new RenderSnowball(Wacky.itemDorito));
         this.addRender(EntityBananaThrowable.class, new RenderSnowball(Wacky.itemBanana));
         this.addRender(EntityBullet.class, new RenderSnowball(Wacky.itemBullet));
         this.addRender(EntitySunSpike.class, new RenderSunSpike());
+        this.addRender(EntityAsteroid.class, new RenderAsteroid());
+
     }
 
 

@@ -38,6 +38,11 @@ public class EntityExplodaCow extends EntityMob
     }
 
     @Override
+    protected boolean isAIEnabled() {
+        return false;
+    }
+
+    @Override
     public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
         if (p_70097_1_.isExplosion())
             return false;
@@ -56,7 +61,7 @@ public class EntityExplodaCow extends EntityMob
     @Override
     public void onUpdate() {
 
-        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null && this.hasPath() != false)
+        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null && this.hasPath() != false && this.getEntitySenses().canSee(this.getEntityToAttack())  )
         {
             this.explode();
         }

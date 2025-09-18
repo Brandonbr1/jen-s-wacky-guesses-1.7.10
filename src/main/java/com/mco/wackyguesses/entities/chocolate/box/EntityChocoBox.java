@@ -28,6 +28,7 @@ public class EntityChocoBox extends EntityMob implements IBossDisplayData
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(250);
         this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(1);
     }
+
     @Override
     public int getTotalArmorValue() {
         return 12;

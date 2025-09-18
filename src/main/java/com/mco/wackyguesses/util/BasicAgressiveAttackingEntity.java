@@ -22,7 +22,7 @@ public class BasicAgressiveAttackingEntity extends EntityMob
             List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
             for(EntityPlayer entity : list)
             {
-                if(entity!=null) {
+                if(entity!=null && !entity.capabilities.isCreativeMode) {
                     this.setAttackTarget(entity);
                 }
             }

@@ -18,9 +18,9 @@ import net.minecraft.world.World;
 public class WackyList {
 
     private static final Logger logger = LogManager.getLogger();
-    public static Map < String, Class <? extends Entity >> stringToClassMapping = new HashMap<String, Class<? extends Entity>>();
-    public static Map < Class <? extends Entity > , String > classToStringMapping = new HashMap<Class<? extends Entity>, String>();
-    public static Map < Integer, Class <? extends Entity >> IDtoClassMapping = new HashMap<Integer, Class<? extends Entity>>();
+    private static Map < String, Class <? extends Entity >> stringToClassMapping = new HashMap<String, Class<? extends Entity>>();
+    private static Map < Class <? extends Entity > , String > classToStringMapping = new HashMap<Class<? extends Entity>, String>();
+    private static Map < Integer, Class <? extends Entity >> IDtoClassMapping = new HashMap<Integer, Class<? extends Entity>>();
     private static Map < Class <? extends Entity > , Integer > classToIDMapping = new HashMap<Class<? extends Entity>, Integer>();
     private static Map<String, Integer> stringToIDMapping = new HashMap<String, Integer>();
     public static HashMap<Integer, WackyList.EntityEggInfo> entityEggs = new LinkedHashMap<Integer, EntityEggInfo>();
@@ -29,7 +29,7 @@ public class WackyList {
      * adds a mapping between Entity classes and both a string representation and an ID
      */
     public static void addMapping(Class<? extends Entity> p_75618_0_, String p_75618_1_, int p_75618_2_) {
-        if (p_75618_2_ < 0 || p_75618_2_ > 255) throw new IllegalArgumentException("Attempted to register a entity with invalid ID: " + p_75618_2_ + " Name: " + p_75618_1_ + " Class: " + p_75618_0_);
+        if (p_75618_2_ < 0 || p_75618_2_ > Short.MAX_VALUE) throw new IllegalArgumentException("Attempted to register a entity with invalid ID: " + p_75618_2_ + " Name: " + p_75618_1_ + " Class: " + p_75618_0_);
         if (stringToClassMapping.containsKey(p_75618_1_))
             throw new IllegalArgumentException("ID is already registered: " + p_75618_1_);
         else if (IDtoClassMapping.containsKey(Integer.valueOf(p_75618_2_)))
@@ -65,54 +65,6 @@ public class WackyList {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
-        }
-
-        return entity;
-    }
-
-    /**
-     * create a new instance of an entity from NBT store
-     */
-    public static Entity createEntityFromNBT(NBTTagCompound p_75615_0_, World p_75615_1_) {
-        Entity entity = null;
-
-        if ("Minecart".equals(p_75615_0_.getString("id"))) {
-            switch (p_75615_0_.getInteger("Type")) {
-                case 0:
-                    p_75615_0_.setString("id", "MinecartRideable");
-                    break;
-                case 1:
-                    p_75615_0_.setString("id", "MinecartChest");
-                    break;
-                case 2:
-                    p_75615_0_.setString("id", "MinecartFurnace");
-            }
-
-            p_75615_0_.removeTag("Type");
-        }
-
-        Class<? extends Entity> oclass = null;
-        try {
-            oclass = stringToClassMapping.get(p_75615_0_.getString("id"));
-
-            if (oclass != null) {
-                entity = oclass.getConstructor(new Class[] {World.class}).newInstance(new Object[] {p_75615_1_});
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        if (entity != null) {
-            try {
-                entity.readFromNBT(p_75615_0_);
-            } catch (Exception e) {
-                //  FMLLog.log(Level.ERROR, e,
-                //        "An Entity %s(%s) has thrown an exception during loading, its state cannot be restored. Report this to the mod author",
-                //        p_75615_0_.getString("id"), oclass.getName());
-                entity = null;
-            }
-        } else {
-            logger.warn("Skipping Entity with id " + p_75615_0_.getString("id"));
         }
 
         return entity;
@@ -171,20 +123,15 @@ public class WackyList {
         return oclass != null ? classToStringMapping.get(oclass) : null;
     }
 
-    public static void func_151514_a() {}
-
-    public static Set<String> func_151515_b() {
-        return Collections.unmodifiableSet(stringToIDMapping.keySet());
-    }
 
     public static StatBase func_151182_a(WackyList.EntityEggInfo p_151182_0_) {
         String s = WackyList.getStringFromID(p_151182_0_.spawnedID);
-        return s == null ? null : (new StatBase("stat.killEntity." + s, new ChatComponentTranslation("stat.entityKill", new Object[] {new ChatComponentTranslation("entity." + s + ".name", new Object[0])}))).registerStat();
+        return s == null ? null : (new StatBase("stat.killEntity.wacky" + s, new ChatComponentTranslation("stat.entityKill", new Object[] {new ChatComponentTranslation("entity." + s +   "wacky"+  ".name", new Object[0])}))).registerStat();
     }
 
     public static StatBase func_151176_b(WackyList.EntityEggInfo p_151176_0_) {
         String s = WackyList.getStringFromID(p_151176_0_.spawnedID);
-        return s == null ? null : (new StatBase("stat.entityKilledBy." + s, new ChatComponentTranslation("stat.entityKilledBy", new Object[] {new ChatComponentTranslation("entity." + s + ".name", new Object[0])}))).registerStat();
+        return s == null ? null : (new StatBase("stat.entityKilledBy.wacky" + s, new ChatComponentTranslation("stat.entityKilledBy", new Object[] {new ChatComponentTranslation("entity." + s + "wacky"+ ".name", new Object[0])}))).registerStat();
     }
 
 

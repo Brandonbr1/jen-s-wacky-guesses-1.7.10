@@ -38,13 +38,26 @@ public class EntityGoose extends EntityMob
     }
 
     @Override
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(34.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.450000011920929D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+    protected void entityInit() {
+        super.entityInit();
         EntitySkeleton entityskeleton = new EntitySkeleton(this.worldObj);
-        this.mountEntity(entityskeleton);
+        entityskeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, MathHelper.wrapAngleTo180_float(this.worldObj.rand.nextFloat() * 360.0F), 0.0F);
+        entityskeleton.rotationYawHead = entityskeleton.rotationYaw;
+        entityskeleton.renderYawOffset = entityskeleton.rotationYaw;
+        entityskeleton.onSpawnWithEgg((IEntityLivingData)null);
+        this.worldObj.spawnEntityInWorld(entityskeleton);
+        entityskeleton.mountEntity(this);
+        entityskeleton.playLivingSound();
+    }
+
+
+    @Override
+    protected void applyEntityAttributes()
+    {;
+    super.applyEntityAttributes();
+    this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(34.0D);
+    this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.450000011920929D);
+    this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
     }
 
     @Override
