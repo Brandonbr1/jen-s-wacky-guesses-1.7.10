@@ -8,6 +8,7 @@ import com.mco.wackyguesses.entities.bananamobile.EntityBananamobile;
 import com.mco.wackyguesses.entities.chocolate.box.EntityChocoBox;
 import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
 import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
+import com.mco.wackyguesses.entities.cloud.EntityCloud;
 import com.mco.wackyguesses.entities.dorito.EntityDorito;
 import com.mco.wackyguesses.entities.dorito.doritoThrowable.EntityDoritoThrowable;
 import com.mco.wackyguesses.entities.egg.EntityEgg;
@@ -120,6 +121,8 @@ public class Wacky {
         this.addMob(EntityBoxOfNoodles.class, true, "Box of Noddles", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
         this.addMob(EntityPepperShaker.class, true, "Pepper", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityCloud.class, true, "Cloud", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
 
         this.addNonLivingMob(EntityDoritoThrowable.class, "Dorito");

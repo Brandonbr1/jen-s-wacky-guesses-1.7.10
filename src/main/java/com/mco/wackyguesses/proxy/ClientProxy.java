@@ -16,6 +16,8 @@ import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
 import com.mco.wackyguesses.entities.chocolate.rectangle.RenderRectangularChoco;
 import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
 import com.mco.wackyguesses.entities.chocolate.sphere.RenderSphericalChoco;
+import com.mco.wackyguesses.entities.cloud.EntityCloud;
+import com.mco.wackyguesses.entities.cloud.RenderCloud;
 import com.mco.wackyguesses.entities.dorito.EntityDorito;
 import com.mco.wackyguesses.entities.dorito.RenderDorito;
 import com.mco.wackyguesses.entities.dorito.doritoThrowable.EntityDoritoThrowable;
@@ -106,6 +108,7 @@ public class ClientProxy extends CommonProxy {
 
         this.addRender(EntityPepper.class, new RenderSnowball(Wacky.itemPepper));
         this.addRender(EntityPepperShaker.class, new RenderPepperShaker());
+        this.addRender(EntityCloud.class, new RenderCloud());
 
 
         this.addRender(EntityDoritoThrowable.class, new RenderSnowball(Wacky.itemDorito));

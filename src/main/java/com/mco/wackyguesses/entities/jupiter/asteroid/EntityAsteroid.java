@@ -64,7 +64,7 @@ public class EntityAsteroid extends EntityFireball
             this.setDead();
         }
 
-        if (this.shootingEntity == null) {
+        if (this.shootingEntity.isDead) {
             this.setDead();
         }
 

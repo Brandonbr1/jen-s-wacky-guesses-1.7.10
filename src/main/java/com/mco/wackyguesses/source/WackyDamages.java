@@ -20,6 +20,8 @@ public class WackyDamages extends DamageSource
     public static DamageSource ASTEROID = (new WackyDamages("asteroid"));
     public static DamageSource NOODLE = (new WackyDamages("noodle"));
     public static DamageSource PEPPER = (new WackyDamages("pepper"));
+    public static DamageSource POOF = (new WackyDamages("poof"));
+    public static DamageSource CLAW =  (new WackyDamages("claw"));
 
 
 }
