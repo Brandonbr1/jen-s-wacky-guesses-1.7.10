@@ -1,4 +1,4 @@
-package com.mco.wackyguesses.util;
+package com.mco.wackyguesses.entities.base;
 
 import java.util.List;
 

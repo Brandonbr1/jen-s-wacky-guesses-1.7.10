@@ -1,6 +1,6 @@
 package com.mco.wackyguesses.entities.bananamobile;
 
-import com.mco.wackyguesses.util.BaseRideable;
+import com.mco.wackyguesses.entities.base.BaseRideable;
 
 import net.minecraft.world.World;
 

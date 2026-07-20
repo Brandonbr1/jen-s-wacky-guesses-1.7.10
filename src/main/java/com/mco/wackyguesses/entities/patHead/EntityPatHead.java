@@ -1,6 +1,6 @@
 package com.mco.wackyguesses.entities.patHead;
 
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -10,6 +10,8 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class EntityPatHead extends BasicAgressiveAttackingEntity
 {
@@ -33,6 +35,20 @@ public class EntityPatHead extends BasicAgressiveAttackingEntity
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(15.0D);
     }
 
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        if(this.getAttackTarget()==null)
+        {
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
 
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
+                if(entity!=null) {
+                    this.setAttackTarget(entity);
+                }
+            }
 
+        }
+    }
 }

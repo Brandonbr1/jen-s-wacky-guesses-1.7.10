@@ -17,11 +17,10 @@ public class RenderZombieJar extends RenderLiving
 {
     private static final String MOB_TEXTURE = ":textures/entities/zombie_jar.png";
     private static final String CRACKED_1 = ":textures/entities/zombie_jar_cracked_1.png";
-    private static final String CRACKED_2 = ":wackyguesses:textures/entities/zombie_jar_cracked_2.png";
+    private static final String CRACKED_2 = ":textures/entities/zombie_jar_cracked_2.png";
 
     public RenderZombieJar() {
         super(new ModelZombieJar(), 1.0f);
-        // TODO Auto-generated constructor stub
     }
 
     protected void preRenderCallback(EntityZombieJar entityLiving, float partialTickTime)

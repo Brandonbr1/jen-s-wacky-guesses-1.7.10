@@ -2,6 +2,7 @@ package com.mco.wackyguesses.entities.explodaCow;
 
 import java.util.List;
 
+import com.mco.wackyguesses.Wacky;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -11,6 +12,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -44,29 +46,22 @@ public class EntityExplodaCow extends EntityMob
 
     @Override
     public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
-        if (p_70097_1_.isExplosion())
+        if (p_70097_1_.isExplosion()) {
             return false;
-        else
+        }
             return super.attackEntityFrom(p_70097_1_, p_70097_2_);
+
     }
 
     @Override
     public void onLivingUpdate()
     {
-        super.onLivingUpdate();
-    }
-
-
-
-    @Override
-    public void onUpdate() {
-
-        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null && this.hasPath() != false && this.getEntitySenses().canSee(this.getEntityToAttack())  )
+        if (this.isEntityAlive() && this.ticksExisted % 50 == 0 && this.getEntityToAttack() != null)
         {
             this.explode();
         }
 
-        super.onUpdate();
+        super.onLivingUpdate();
     }
 
     private void explode() {
@@ -75,10 +70,13 @@ public class EntityExplodaCow extends EntityMob
             float f = 1.0F;
             this.dead = true;
             this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
-            // TODO: add effects
-            //this.spawnLingeringCloud();
+            this.spawnLingeringCloud();
         }
 
+    }
+
+    private void spawnLingeringCloud() {
+        Wacky.proxy.spawnFXExplodaCow(worldObj, posX, posY, posX);
     }
 
 

@@ -70,6 +70,7 @@ public class Wacky {
     public static Item itemBanana;
     public static Item itemBullet;
     public static Item itemPepper;
+    public static Item itemEgg;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -78,26 +79,28 @@ public class Wacky {
 
         itemDorito = new ItemFood(1, 1, false).setCreativeTab(wackyTab).setUnlocalizedName("item_dorito").setTextureName(Wacky.MODID_PREFIX + "item_dorito");
         itemBanana = new ItemFood(4, 4, false).setUnlocalizedName("item_banana").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_banana");
+        itemEgg = new ItemFood(6, 4, false).setUnlocalizedName("item_egg").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_egg");
         itemBullet = new Item().setUnlocalizedName("item_bullet").setTextureName(Wacky.MODID_PREFIX + "item_bullet");
         itemPepper = new Item().setUnlocalizedName("item_pepper").setTextureName(Wacky.MODID_PREFIX + "item_pepper");
 
-        this.addItemName(monsterSpawner, "Spawn");
-        this.addItemName(itemDorito, "Dorito");
-        this.addItemName(itemBanana, "Banana");
-        this.addItemName(itemBullet, "Bullet");
+        addItemName(monsterSpawner, "Spawn");
+        addItemName(itemDorito, "Dorito");
+        addItemName(itemBanana, "Banana");
+        addItemName(itemBullet, "Bullet");
+        addItemName(itemEgg, "Egg");
 
-        this.addMob(EntityPatHead.class, true, "Pat's Head", 0x03193d, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityEgg.class, true, "Egg", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityIronPapa.class, true, "Iron Papa", 0x00000, 0x00000e, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityDorito.class, true, "Mr. Señor Dorito", 0xff3200, 0xff6a00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityBananamobile.class, true, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 0xffee00, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityBee.class, true, "Bee", 0x000000, 0xffee00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityRectangularChoco.class, true, "Rectangular Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityChocoBox.class, true, "Chocolate Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityBanana.class, true, "Banana Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        this.addMob(EntityBananaMinion.class, true, "Banana Minion", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityPatHead.class, true, "Pat's Head", 0x03193d, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityEgg.class, true, "Egg", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityIronPapa.class, true, "Iron Papa", 0x00000, 0x00000e, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityDorito.class, true, "Mr. Senor Dorito", 0xff3200, 0xff6a00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBananamobile.class, true, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 0xffee00, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBee.class, true, "Bee", 0x000000, 0xffee00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityRectangularChoco.class, true, "Rectangular Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityChocoBox.class, true, "Chocolate Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBanana.class, true, "Banana Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBananaMinion.class, true, "Banana Minion", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
 
         this.addMob(EntityAngelicSpider.class, true, "Angelic Spider", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
@@ -149,7 +152,7 @@ public class Wacky {
         {
             WackyList.addMapping(entityClass, entityName, this.id++, backgroundEggColour, foregroundEggColour);
         }
-        EntityRegistry.addSpawn(entityClass, weightedProb, min, max, typeOfCreature, biomes);
+   //     EntityRegistry.addSpawn(entityClass, weightedProb, min, max, typeOfCreature, biomes);
         LanguageRegistry.instance().addStringLocalization("entity." + entityName + ".name", "en_US", entityName);
         LanguageRegistry.instance().addStringLocalization("entity." + "wackyguesses." + entityName + ".name", "en_US", entityName);
 

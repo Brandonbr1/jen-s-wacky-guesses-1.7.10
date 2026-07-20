@@ -2,7 +2,7 @@ package com.mco.wackyguesses.entities.floatBeeGunner.bee;
 
 import java.util.List;
 
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

@@ -1,4 +1,4 @@
-package com.mco.wackyguesses.util;
+package com.mco.wackyguesses.entities.base;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

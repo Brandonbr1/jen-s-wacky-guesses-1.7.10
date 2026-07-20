@@ -6,7 +6,7 @@ import java.util.Random;
 import com.mco.wackyguesses.entities.cloud.ai.AIHover;
 import com.mco.wackyguesses.entities.cloud.ai.AIPoof;
 import com.mco.wackyguesses.entities.cloud.ai.AIStand;
-import com.mco.wackyguesses.util.BaseBossMob;
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationAI;

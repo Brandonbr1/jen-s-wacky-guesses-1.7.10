@@ -60,10 +60,16 @@ import com.mco.wackyguesses.entities.wheelbarrow.RenderWheelbarrow;
 import com.mco.wackyguesses.entities.zombieJar.EntityZombieJar;
 import com.mco.wackyguesses.entities.zombieJar.RenderZombieJar;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityCloudFX;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 public class ClientProxy extends CommonProxy {
 
@@ -125,6 +131,17 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(clazz, render);
     }
 
+    Minecraft mc = FMLClientHandler.instance().getClient();
+
+
+    @Override
+    public void spawnFXExplodaCow(World world, double x, double y, double z) {
+        if (!world.isRemote || mc == null || mc.effectRenderer == null) {
+            return;
+        }
+        WackyClouldFX entityareaeffectcloud = new WackyClouldFX(world, x, y, z, 0,0,0);
+        mc.effectRenderer.addEffect(entityareaeffectcloud);
+    }
 
 
 

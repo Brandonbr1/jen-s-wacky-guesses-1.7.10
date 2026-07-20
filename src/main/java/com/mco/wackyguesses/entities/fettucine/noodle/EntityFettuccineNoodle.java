@@ -1,6 +1,6 @@
 package com.mco.wackyguesses.entities.fettucine.noodle;
 
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;

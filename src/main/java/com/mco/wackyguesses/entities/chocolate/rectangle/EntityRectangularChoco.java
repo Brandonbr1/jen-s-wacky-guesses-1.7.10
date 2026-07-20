@@ -3,7 +3,7 @@ package com.mco.wackyguesses.entities.chocolate.rectangle;
 import java.util.Random;
 
 import com.mco.wackyguesses.Wacky;
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;

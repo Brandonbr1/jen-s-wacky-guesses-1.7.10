@@ -3,7 +3,7 @@ package com.mco.wackyguesses.entities.jupiter;
 import java.util.List;
 
 import com.mco.wackyguesses.entities.jupiter.asteroid.EntityAsteroid;
-import com.mco.wackyguesses.util.BaseBossMob;
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;

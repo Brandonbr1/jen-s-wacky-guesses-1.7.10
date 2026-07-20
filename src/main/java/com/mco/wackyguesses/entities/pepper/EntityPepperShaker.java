@@ -27,7 +27,7 @@ public class EntityPepperShaker extends EntityMob
 
     @Override
     protected boolean isAIEnabled() {
-        return false;
+        return true;
     }
 
     @Override
@@ -56,8 +56,6 @@ public class EntityPepperShaker extends EntityMob
     }
 
     public void shootPepper(EntityLivingBase target) {
-        if (target == null)
-            return;
         EntityPepper entityPepper = new EntityPepper(this.worldObj, this);
         double d0 = target.posY + target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;

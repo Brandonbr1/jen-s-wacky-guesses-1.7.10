@@ -1,7 +1,5 @@
-package com.mco.wackyguesses.util;
+package com.mco.wackyguesses.entities.base;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.world.World;

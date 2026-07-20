@@ -1,6 +1,7 @@
 package com.mco.wackyguesses.entities.egg;
 
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.Wacky;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -31,4 +32,10 @@ public class EntityEgg extends BasicAgressiveAttackingEntity
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2.0D);
     }
 
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+
+        this.dropItem(Wacky.itemEgg, this.rand.nextInt(3));
+    }
 }

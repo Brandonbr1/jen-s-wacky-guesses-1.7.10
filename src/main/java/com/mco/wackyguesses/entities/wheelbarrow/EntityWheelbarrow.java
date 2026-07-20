@@ -1,19 +1,18 @@
 package com.mco.wackyguesses.entities.wheelbarrow;
 
-import java.util.List;
-
 import com.mco.wackyguesses.source.WackyDamages;
-import com.mco.wackyguesses.util.BasicAgressiveAttackingEntity;
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class EntityWheelbarrow extends BasicAgressiveAttackingEntity
 {
@@ -26,7 +25,6 @@ public class EntityWheelbarrow extends BasicAgressiveAttackingEntity
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 32.0F));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
-        // TODO Auto-generated constructor stub
     }
 
     @Override
@@ -39,8 +37,21 @@ public class EntityWheelbarrow extends BasicAgressiveAttackingEntity
     }
 
     @Override
-    protected boolean isAIEnabled() {
-        return true;
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+
+        if(this.getAttackTarget()==null)
+        {
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
+
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
+                if(entity!=null) {
+                    this.setAttackTarget(entity);
+                }
+            }
+
+        }
     }
 
     @Override

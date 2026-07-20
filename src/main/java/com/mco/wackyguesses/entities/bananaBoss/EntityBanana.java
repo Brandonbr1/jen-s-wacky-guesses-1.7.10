@@ -44,6 +44,8 @@ public class EntityBanana extends EntityMob implements IBossDisplayData, IRanged
     }
 
 
+
+
     @Override
     public int getTotalArmorValue()
     {
