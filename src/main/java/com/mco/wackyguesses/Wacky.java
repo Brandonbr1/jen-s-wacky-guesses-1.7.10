@@ -104,45 +104,55 @@ public class Wacky {
         addItemName(bananaKey, "Banana Key");
         addItemName(bananaMobile, "Banana Mobile");
         addItemName(rectChoc, "Rectangular Chocolate");
-        addItemName(sphericalChoc, "Spherical Choclate");
+        addItemName(sphericalChoc, "Spherical Chocolate");
 
-        addMob(EntityPatHead.class, true, "Pat's Head", 0x03193d, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityEgg.class, true, "Egg", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityIronPapa.class, true, "Iron Papa", 0x00000, 0x00000e, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityDorito.class, true, "Mr. Senor Dorito", 0xff3200, 0xff6a00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityPatHead.class, true, "Pat's Head", 16724480, 16738816, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        addMob(EntityEgg.class, true, "Egg", 16772608, 16777215, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        addMob(EntityIronPapa.class, true, "Iron Papa", 0, 14, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        addMob(EntityDorito.class, true, "Mr. Senor Dorito", 16724480, 16738816, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
         addMob(EntityBananamobile.class, false, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 0xffee00, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityBee.class, true, "Bee", 0x000000, 0xffee00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityRectangularChoco.class, true, "Rectangular Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityChocoBox.class, true, "Chocolate Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityBanana.class, true, "Banana Boss", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityBananaMinion.class, true, "Banana Minion", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
+        addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 16772608, 0, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityAngelicSpider.class, true, "Angelic Spider", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBee.class, true, "Bee", 0, 16772608, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityExplodaCow.class, true, "Exploda Cow", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 14858496, 1840897, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityOctobot.class, true, "OctoBot(W.I.P)", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityRectangularChoco.class, true, "Rectangular Chocolate", 14858496, 1840897, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityZombieJar.class, true, "Zombie Jar", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityChocoBox.class, true, "Chocolate Boss", 14858496, 1840897, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityWheelbarrow.class, true, "Wheel Barrow", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBanana.class, true, "Banana Boss", 16776960, 3153939, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityGoose.class, true, "Skele Goose", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBananaMinion.class, true, "Banana Minion", 3153939, 16776960, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntitySunUrchin.class, true, "Sun Urchin", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityAngelicSpider.class, true, "Angelic Spider", 16774535, 16776685, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityJupiter.class, true, "Jupiter", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityExplodaCow.class, true, "Exploda Cow", 8381573, 935697, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityFettuccineNoodle.class, true, "Feettuccine Noodle", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityOctobot.class, true, "OctoBot(W.I.P)", 11909308, 1464237, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityBoxOfNoodles.class, true, "Box of Noddles", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityZombieJar.class, true, "Zombie Jar", 3156082, 6000962, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityPepperShaker.class, true, "Pepper", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityWheelbarrow.class, true, "Wheel Barrow", 8355711, 5848361, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityCloud.class, true, "Cloud", 0xe2b900, 0x1c1701, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityGoose.class, true, "Skele Goose", 4733494, 8421504, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntitySunUrchin.class, true, "Sun Urchin", 16711680, 16760576, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityJupiter.class, true, "Jupiter", 11300128, 16445144, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityFettuccineNoodle.class, true, "Feettuccine Noodle", 16768256, 16774317, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityBoxOfNoodles.class, true, "Box of Noddles", 3327, 16768256, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityPepperShaker.class, true, "Pepper", 14737632, 5855577, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        this.addMob(EntityCloud.class, true, "Cloud", 16777215, 10724259, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
 
         this.addNonLivingMob(EntityDoritoThrowable.class, "Dorito");

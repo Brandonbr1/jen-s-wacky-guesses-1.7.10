@@ -2,13 +2,13 @@
   {
     "modid": "${modId}",
     "name": "${modName}",
-    "description": "",
-    "version": "${modVersion}",
+    "description": "This mod adds in a bunch of mobs that Jen guessed incorrectly for the Challenge Games!",
+    "version": "1.0",
     "mcversion": "${minecraftVersion}",
-    "url": "",
+    "url": "https://github.com/Brandonbr1/jen-s-wacky-guesses-1.7.10/",
     "updateUrl": "",
-    "authorList": [ "Jerios", "MCO" ],
-    "credits": "",
+    "authorList": [ "Jerios", "TheMinecraftOverlord(MCO)" ],
+    "credits": "Jen for the ideas, Pat for supporting MCO :)",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
