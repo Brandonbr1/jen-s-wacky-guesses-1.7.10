@@ -1,5 +1,6 @@
 package com.mco.wackyguesses.entities.bananaBoss.bananaSmall;
 
+import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -36,4 +37,10 @@ public class EntityBananaMinion extends BasicAgressiveAttackingEntity
         return 0;
     }
 
+
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        dropItem(Wacky.itemBanana, rand.nextInt(3));
+    }
 }

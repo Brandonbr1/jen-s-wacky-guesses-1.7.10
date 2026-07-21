@@ -41,15 +41,15 @@ public class EntityExplodaCow extends EntityMob
 
     @Override
     protected boolean isAIEnabled() {
-        return false;
+        return true;
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
-        if (p_70097_1_.isExplosion()) {
+    public boolean attackEntityFrom(DamageSource source, float amm) {
+        if (source.isExplosion()) {
             return false;
         }
-            return super.attackEntityFrom(p_70097_1_, p_70097_2_);
+        return super.attackEntityFrom(source, amm);
 
     }
 

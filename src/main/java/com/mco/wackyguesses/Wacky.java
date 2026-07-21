@@ -32,6 +32,8 @@ import com.mco.wackyguesses.entities.sunUrchin.projectile.EntitySunSpike;
 import com.mco.wackyguesses.entities.wheelbarrow.EntityWheelbarrow;
 import com.mco.wackyguesses.entities.zombieJar.EntityZombieJar;
 import com.mco.wackyguesses.handlers.Config;
+import com.mco.wackyguesses.item.ItemBananaKey;
+import com.mco.wackyguesses.item.ItemBananaMobile;
 import com.mco.wackyguesses.item.WackyItemMonsterPlacer;
 import com.mco.wackyguesses.item.WackyList;
 import com.mco.wackyguesses.proxy.CommonProxy;
@@ -71,6 +73,11 @@ public class Wacky {
     public static Item itemBullet;
     public static Item itemPepper;
     public static Item itemEgg;
+    public static Item bananaKey;
+    public static Item bananaMobile;
+
+    public static Item rectChoc;
+    public static Item sphericalChoc;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -80,20 +87,30 @@ public class Wacky {
         itemDorito = new ItemFood(1, 1, false).setCreativeTab(wackyTab).setUnlocalizedName("item_dorito").setTextureName(Wacky.MODID_PREFIX + "item_dorito");
         itemBanana = new ItemFood(4, 4, false).setUnlocalizedName("item_banana").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_banana");
         itemEgg = new ItemFood(6, 4, false).setUnlocalizedName("item_egg").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_egg");
-        itemBullet = new Item().setUnlocalizedName("item_bullet").setTextureName(Wacky.MODID_PREFIX + "item_bullet");
-        itemPepper = new Item().setUnlocalizedName("item_pepper").setTextureName(Wacky.MODID_PREFIX + "item_pepper");
+        itemBullet = new Item().setUnlocalizedName("item_bullet").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_bullet");
+        itemPepper = new Item().setUnlocalizedName("item_pepper").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_pepper");
+        bananaKey = new ItemBananaKey().setUnlocalizedName("item_banana_key").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_banana_key");
+        bananaMobile = new ItemBananaMobile().setUnlocalizedName("item_bananamobile").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_bananamobile");
+        rectChoc = new ItemFood(2, 1, false).setUnlocalizedName("item_rectangular_chocolate").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_rectangular_chocolate");
+        sphericalChoc = new ItemFood(2, 1, false).setUnlocalizedName("item_spherical_chocolate").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_spherical_chocolate");
+
 
         addItemName(monsterSpawner, "Spawn");
         addItemName(itemDorito, "Dorito");
         addItemName(itemBanana, "Banana");
         addItemName(itemBullet, "Bullet");
         addItemName(itemEgg, "Egg");
+        addItemName(itemPepper, "Pepper");
+        addItemName(bananaKey, "Banana Key");
+        addItemName(bananaMobile, "Banana Mobile");
+        addItemName(rectChoc, "Rectangular Chocolate");
+        addItemName(sphericalChoc, "Spherical Choclate");
 
         addMob(EntityPatHead.class, true, "Pat's Head", 0x03193d, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntityEgg.class, true, "Egg", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntityIronPapa.class, true, "Iron Papa", 0x00000, 0x00000e, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntityDorito.class, true, "Mr. Senor Dorito", 0xff3200, 0xff6a00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
-        addMob(EntityBananamobile.class, true, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        addMob(EntityBananamobile.class, false, "Banana Mobile", 0xffee00, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntityFloatBeeGunner.class, true, "Float Bee Gunner", 0xffee00, 0x000000, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntityBee.class, true, "Bee", 0x000000, 0xffee00, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
         addMob(EntitySphericalChoco.class, true, "Spherical Chocolate", 0x1a1501, 0xffffff, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);

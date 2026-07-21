@@ -2,6 +2,7 @@ package com.mco.wackyguesses.entities.chocolate.box;
 
 import java.util.List;
 
+import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
 import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
 
@@ -34,6 +35,14 @@ public class EntityChocoBox extends EntityMob implements IBossDisplayData
         return 12;
     }
 
+
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        dropItem(Wacky.sphericalChoc, this.rand.nextInt(9) + 6);
+        dropItem(Wacky.rectChoc, this.rand.nextInt(9) + 6);
+    }
+
     @Override
     public void onLivingUpdate()
     {
@@ -41,11 +50,13 @@ public class EntityChocoBox extends EntityMob implements IBossDisplayData
         if(this.getAttackTarget()==null)
         {
             List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-            for(EntityPlayer entity : list)
-            {
+
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
                 if(entity!=null) {
                     this.setAttackTarget(entity);
                 }
+
             }
         }
 

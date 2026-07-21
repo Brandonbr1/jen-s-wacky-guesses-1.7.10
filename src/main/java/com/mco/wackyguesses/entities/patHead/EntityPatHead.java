@@ -38,17 +38,5 @@ public class EntityPatHead extends BasicAgressiveAttackingEntity
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
-
-            for (int i = 0; i < list.size(); i++) {
-                EntityPlayer entity = list.get(i);
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-            }
-
-        }
     }
 }

@@ -58,8 +58,8 @@ public class EntityBoxOfNoodles extends EntityMob
 
     }
 
-    private void launchNoodleProjectileToEntity(EntityLivingBase p_82216_2_) {
-        this.launchNoodleProjectileToCoords(p_82216_2_.posX, p_82216_2_.posY + p_82216_2_.getEyeHeight() * 0.5D, p_82216_2_.posZ);
+    private void launchNoodleProjectileToEntity(EntityLivingBase mob) {
+        this.launchNoodleProjectileToCoords(mob.posX, mob.posY + mob.getEyeHeight() * 0.5D, mob.posZ);
     }
 
     private void launchNoodleProjectileToCoords(double x, double y, double z) {

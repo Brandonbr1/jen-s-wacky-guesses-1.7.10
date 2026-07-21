@@ -11,7 +11,6 @@ public class BasicAgressiveAttackingEntity extends EntityMob
 
     public BasicAgressiveAttackingEntity(World p_i1738_1_) {
         super(p_i1738_1_);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
@@ -19,13 +18,15 @@ public class BasicAgressiveAttackingEntity extends EntityMob
         super.onLivingUpdate();
         if(this.getAttackTarget()==null)
         {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
-            for(EntityPlayer entity : list)
-            {
-                if(entity!=null && !entity.capabilities.isCreativeMode) {
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
+
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
+                if(entity!=null) {
                     this.setAttackTarget(entity);
                 }
             }
+
         }
 
     }
@@ -34,11 +35,5 @@ public class BasicAgressiveAttackingEntity extends EntityMob
     protected boolean isAIEnabled() {
         return true;
     }
-
-    @Override
-    protected void fall(float p_70069_1_) {
-        super.fall(p_70069_1_);
-    }
-
 
 }

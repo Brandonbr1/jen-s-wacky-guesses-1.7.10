@@ -56,23 +56,15 @@ public class EntityRectangularChoco extends BasicAgressiveAttackingEntity
     }
 
     @Override
-    protected boolean isAIEnabled()
-    {
-        return true;
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        dropItem(Wacky.rectChoc, rand.nextInt(2));
     }
 
     public int getTextureInt()
     {
         return this.textureInt;
     }
-
-
-    @Override
-    public void onUpdate()
-    {
-        super.onUpdate();
-    }
-
 
 
 }

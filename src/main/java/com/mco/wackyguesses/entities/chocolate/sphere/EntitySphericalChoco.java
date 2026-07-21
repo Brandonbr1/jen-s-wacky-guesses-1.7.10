@@ -41,6 +41,12 @@ public class EntitySphericalChoco extends BasicAgressiveAttackingEntity
     }
 
     @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        this.dropItem(Wacky.sphericalChoc, rand.nextInt(2));
+    }
+
+    @Override
     public void writeEntityToNBT(NBTTagCompound nbt)
     {
         super.writeEntityToNBT(nbt);
@@ -63,12 +69,6 @@ public class EntitySphericalChoco extends BasicAgressiveAttackingEntity
     public int getTextureInt()
     {
         return this.textureInt;
-    }
-
-    @Override
-    public void onUpdate()
-    {
-        super.onUpdate();
     }
 
 }

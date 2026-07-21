@@ -3,6 +3,7 @@ package com.mco.wackyguesses.entities.bananaBoss;
 import java.util.List;
 import java.util.Random;
 
+import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.bananaBoss.bananaSmall.EntityBananaMinion;
 import com.mco.wackyguesses.entities.bananaBoss.bananaThrowable.EntityBananaThrowable;
 
@@ -103,5 +104,13 @@ public class EntityBanana extends EntityMob implements IBossDisplayData, IRanged
     }
 
 
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        dropItem(Wacky.itemBanana, rand.nextInt(16) + 4);
 
+        if (rand.nextInt(51) == 0) {
+            dropItem(Wacky.bananaMobile, 1);
+        }
+    }
 }

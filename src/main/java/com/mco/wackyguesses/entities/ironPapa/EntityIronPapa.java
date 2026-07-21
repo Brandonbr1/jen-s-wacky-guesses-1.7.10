@@ -2,6 +2,7 @@ package com.mco.wackyguesses.entities.ironPapa;
 
 import java.util.List;
 
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -17,7 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityIronPapa extends EntityMob
+public class EntityIronPapa extends BasicAgressiveAttackingEntity
 {
     private int attackTimer;
 
@@ -47,17 +48,6 @@ public class EntityIronPapa extends EntityMob
         if (this.attackTimer > 0)
         {
             --this.attackTimer;
-        }
-
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-            for(EntityPlayer entity : list)
-            {
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-            }
         }
     }
 

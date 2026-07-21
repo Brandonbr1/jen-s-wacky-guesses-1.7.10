@@ -37,9 +37,11 @@ public class EntitySunUrchin extends EntityMob
     }
 
     @Override
-    protected boolean isAIEnabled() {
+    protected boolean isAIEnabled()
+    {
         return true;
     }
+
 
     @Override
     public void onLivingUpdate() {

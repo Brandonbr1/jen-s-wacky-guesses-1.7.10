@@ -2,6 +2,7 @@ package com.mco.wackyguesses.entities.dorito;
 
 import java.util.Random;
 
+import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.dorito.doritoThrowable.EntityDoritoThrowable;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -91,5 +92,9 @@ public class EntityDorito extends EntityMob implements IBossDisplayData, IRanged
         this.worldObj.spawnEntityInWorld(entityDoritoThrowable);
     }
 
-
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        this.dropItem(Wacky.itemDorito, this.rand.nextInt(7));
+    }
 }

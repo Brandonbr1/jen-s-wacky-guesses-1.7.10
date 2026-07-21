@@ -1,19 +1,27 @@
 package com.mco.wackyguesses.entities.base;
 
+import com.mco.wackyguesses.Wacky;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 public class BaseRideable extends EntityLiving{
 
@@ -25,48 +33,29 @@ public class BaseRideable extends EntityLiving{
     }
 
     @Override
-    protected void entityInit() {
-        super.entityInit();
-    }
-
-    @Override
     protected boolean canDespawn() {
         return false;
     }
-
 
     @Override
     public boolean allowLeashing() {
         return false;
     }
 
-
-
-    /**
-     * Called when the entity is attacked.
-     */
     @Override
-    public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
-        Entity entity = p_70097_1_.getEntity();
-        return this.riddenByEntity != null && this.riddenByEntity.equals(entity) ? false : super.attackEntityFrom(p_70097_1_, p_70097_2_);
+    public boolean attackEntityFrom(DamageSource source, float amm) {
+        Entity entity = source.getEntity();
+        return (this.riddenByEntity == null || !this.riddenByEntity.equals(entity)) && super.attackEntityFrom(source, amm);
+
     }
 
-    /**
-     * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
-     */
 
-    /**
-     * Returns true if this entity should push and be pushed by other entities when colliding.
-     */
     @Override
     public boolean canBePushed() {
         return this.riddenByEntity == null;
     }
 
 
-    /**
-     * Called when the mob is falling. Calculates and applies fall damage.
-     */
     @Override
     protected void fall(float p_70069_1_) {
     }
@@ -77,9 +66,6 @@ public class BaseRideable extends EntityLiving{
         return false;
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
     @Override
     protected String getDeathSound() {
         return null;
@@ -87,32 +73,20 @@ public class BaseRideable extends EntityLiving{
     }
 
     @Override
-    protected Item getDropItem() {
-        return null;
+    public boolean canBreatheUnderwater() {
+        return true;
     }
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        dropItem(Wacky.bananaMobile, 1);
+    }
+
     @Override
     protected String getHurtSound() {
         return null;
     }
-
-
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
-    @Override
-    protected String getLivingSound() {
-        return null;
-    }
-
-    protected String getAngrySoundName() {
-        return null;
-    }
-
-
 
     @Override
     protected void applyEntityAttributes() {
@@ -126,90 +100,32 @@ public class BaseRideable extends EntityLiving{
         return true;
     }
 
-    /**
-     * Returns the volume for the sounds this mob makes.
-     */
-    @Override
-    protected float getSoundVolume() {
-        return 0.8F;
-    }
-
-
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
     @Override
     public boolean interact(EntityPlayer p_70085_1_) {
-        ItemStack itemstack = p_70085_1_.inventory.getCurrentItem();
-
         if (this.riddenByEntity == null) {
-            if (itemstack != null && itemstack.interactWithEntity(p_70085_1_, this))
+                this.mount(p_70085_1_);
                 return true;
-            else {
-                this.func_110237_h(p_70085_1_);
-                return true;
-            }
-        } else
+        }
             return super.interact(p_70085_1_);
-
-
 
     }
 
-    private void func_110237_h(EntityPlayer p_110237_1_) {
-        p_110237_1_.rotationYaw = this.rotationYaw;
-        p_110237_1_.rotationPitch = this.rotationPitch;
+    private void mount(EntityPlayer player) {
+        player.rotationYaw = this.rotationYaw;
+        player.rotationPitch = this.rotationPitch;
 
         if (!this.worldObj.isRemote) {
-            p_110237_1_.mountEntity(this);
+            player.mountEntity(this);
         }
     }
 
 
-    /**
-     * Dead and sleeping entities cannot move
-     */
     @Override
     protected boolean isMovementBlocked() {
         return this.riddenByEntity != null;
     }
 
 
-    /**
-     * Called when the mob's health reaches 0.
-     */
-    @Override
-    public void onDeath(DamageSource p_70645_1_) {
-        super.onDeath(p_70645_1_);
-    }
-
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-    }
-
-    /**
-     * Called to update the entity's position/logic.
-     */
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-    }
-
-
-
-    private boolean func_110200_cJ() {
-        return this.riddenByEntity == null;
-    }
-
-
-    /**
-     * Moves the entity based on the specified heading.  Args: strafe, forward
-     */
     @Override
     public void moveEntityWithHeading(float p_70612_1_, float p_70612_2_) {
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
@@ -258,56 +174,12 @@ public class BaseRideable extends EntityLiving{
         }
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    @Override
-    public void writeEntityToNBT(NBTTagCompound p_70014_1_) {
-        super.writeEntityToNBT(p_70014_1_);
-    }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    @Override
-    public void readEntityFromNBT(NBTTagCompound p_70037_1_) {
-        super.readEntityFromNBT(p_70037_1_);
-
-        IAttributeInstance iattributeinstance = this.getAttributeMap().getAttributeInstanceByName("Speed");
-
-        if (iattributeinstance != null) {
-            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(iattributeinstance.getBaseValue() * 0.25D);
-        }
-
-    }
-
-
-
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
     @Override
     protected boolean isAIEnabled() {
         return true;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte p_70103_1_)
-    {
-        super.handleHealthUpdate(p_70103_1_);
-
-    }
-
-    @Override
-    public void updateRiderPosition() {
-        super.updateRiderPosition();
-    }
-
-
-    /**
-     * returns true if this entity is by a ladder, false otherwise
-     */
     @Override
     public boolean isOnLadder() {
         return false;
