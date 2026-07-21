@@ -15,6 +15,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -87,8 +88,7 @@ public class EntityDorito extends EntityMob implements IBossDisplayData, IRanged
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
         entityDoritoThrowable.setThrowableHeading(d1, d2 + f, d3, 1.6F, 12.0F);
-        // TODO: ADD SOUNDS.
-        //this.playSound(SoundEvents.ENTITY_SNOWMAN_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityDoritoThrowable);
     }
 

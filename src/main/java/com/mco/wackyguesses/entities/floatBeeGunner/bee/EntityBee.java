@@ -1,13 +1,10 @@
 package com.mco.wackyguesses.entities.floatBeeGunner.bee;
 
-import java.util.List;
-
 import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.EnumDifficulty;
@@ -55,28 +52,17 @@ public class EntityBee extends BasicAgressiveAttackingEntity
             }
 
             return true;
-        } else
+        }
             return false;
     }
 
     @Override
     public void onLivingUpdate()
     {
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-            for(EntityPlayer entity : list)
-            {
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-            }
-        }
-        // TODO: ADD SOUNDS
-        //   if(this.ticksExisted % 10 == 0)
-        //     this.playSound(WackySoundHandler.BUZZ, .4F, 1F);
-
         super.onLivingUpdate();
+           if(this.ticksExisted % 10 == 0) {
+               this.playSound("entity.float_bee_gunner.ambient", .4F, 1F);
+           }
     }
 
 

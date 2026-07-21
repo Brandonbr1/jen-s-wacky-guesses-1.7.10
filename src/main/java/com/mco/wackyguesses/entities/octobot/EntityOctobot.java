@@ -3,6 +3,7 @@ package com.mco.wackyguesses.entities.octobot;
 import java.util.List;
 import java.util.Random;
 
+import com.mco.wackyguesses.entities.base.BasicAgressiveAttackingEntity;
 import com.mco.wackyguesses.source.WackyDamages;
 
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -15,7 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
-public class EntityOctobot extends EntityMob
+public class EntityOctobot extends BasicAgressiveAttackingEntity
 {
     private boolean shouldRenderLasers = false;
     private int chargeTicks;
@@ -43,21 +44,11 @@ public class EntityOctobot extends EntityMob
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if (this.getAttackTarget() == null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-            for (EntityPlayer entity : list)
-            {
-                if (entity != null)
-                {
-                    this.setAttackTarget(entity);
-                }
-            }
-        }
 
         if(this.ticksExisted % 50 == 0 && this.shouldRandomize)
         {
-            Random random = new Random();
+            Random random = this.rand;
+            //Random random = new Random();
             this.chargeBonus = random.nextInt(50);
             this.shouldRandomize = false;
         }
@@ -71,8 +62,7 @@ public class EntityOctobot extends EntityMob
                 {
                     if(this.chargeTicks == 11)
                     {
-                        // TODO: PLAY SOUND
-                        //   this.playSound(WackySoundHandler.LASER, 1F, 1F);
+                        this.playSound("entity.octobot.fire", 1F, 1F);
                     }
 
                     if(this.chargeTicks == 55)

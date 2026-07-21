@@ -32,7 +32,6 @@ public class RenderOctobot extends RenderLiving
 
     @Override
     protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-        // TODO Auto-generated method stub
         return new ResourceLocation(Wacky.MODID + MOB_TEXTURE);
     }
 

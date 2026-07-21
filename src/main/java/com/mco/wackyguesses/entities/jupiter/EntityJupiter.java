@@ -70,7 +70,9 @@ public class EntityJupiter extends BaseBossMob implements IRangedAttackMob{
 
         if (this.getAttackTarget() == null && this.getEntityToAttack() != null) {
             List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
-            for (EntityPlayer entity : list) {
+
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
                 if (entity != null && !entity.capabilities.isCreativeMode) {
                     this.setAttackTarget(entity);
                 }
@@ -85,8 +87,7 @@ public class EntityJupiter extends BaseBossMob implements IRangedAttackMob{
     }
 
     private void launchAsteroidToCoords(int p_82209_1_, double x, double y, double z) {
-        // TODO: WHAT DOES THAT DO?
-        // this.worldObj.playEvent((EntityPlayer)null, 1024, new BlockPos(this), 0);
+        this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1014, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
         double d0 = this.posX;
         double d1 = this.posY + 2.0D;
         double d2 = this.posZ;
@@ -152,7 +153,6 @@ public class EntityJupiter extends BaseBossMob implements IRangedAttackMob{
             float f = (this.rand.nextFloat() - 0.5F) * 8.0F;
             float f1 = (this.rand.nextFloat() - 0.5F) * 4.0F;
             float f2 = (this.rand.nextFloat() - 0.5F) * 8.0F;
-            //   this.worldObj.spawnParticle("hugeexplosion", this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
             this.worldObj.spawnParticle("hugeexplosion", this.posX + f, this.posY + 2.0D + f1, this.posZ + f2, 0.0D, 0.0D, 0.0D);
         }
         this.moveEntity(0.0D, 0.10000000149011612D, 0.0D);

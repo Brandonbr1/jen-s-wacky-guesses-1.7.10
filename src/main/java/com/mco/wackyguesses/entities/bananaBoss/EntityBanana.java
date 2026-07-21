@@ -60,15 +60,15 @@ public class EntityBanana extends EntityMob implements IBossDisplayData, IRanged
         if(this.getAttackTarget()==null)
         {
             List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0, 32.0));
-            for(EntityPlayer entity : list)
-            {
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
                 if(entity!=null) {
                     this.setAttackTarget(entity);
                 }
             }
         }
 
-        Random rand = new Random();
+        Random rand = this.rand;
         if(rand.nextInt(100) == 1 && !this.worldObj.isRemote)
         {
             EntityBananaMinion entityBananaMinion = new EntityBananaMinion(this.worldObj);
@@ -91,8 +91,7 @@ public class EntityBanana extends EntityMob implements IBossDisplayData, IRanged
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
         entityBananaThrowable.setThrowableHeading(d1, d2 + f, d3, 1.6F, 12.0F);
-        // TODO: ADD SOUNDS
-        //  this.playSound(SoundEvents.ENTITY_SNOWMAN_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityBananaThrowable);
     }
 

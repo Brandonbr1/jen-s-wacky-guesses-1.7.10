@@ -13,6 +13,7 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveTowardsTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -68,8 +69,7 @@ public class EntityIronPapa extends BasicAgressiveAttackingEntity
 
         }
 
-        // TODO: ADD SOUNDS
-        //  this.playSound(SoundEvents.ENTITY_IRONGOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound("mob.irongolem.throw", 1.0F, 1.0F);
         return flag;
 
     }
@@ -79,8 +79,7 @@ public class EntityIronPapa extends BasicAgressiveAttackingEntity
     public void handleHealthUpdate(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            // TODO: ADD SOUNDS
-            //this.playSound(SoundEvents.ENTITY_IRONGOLEM_ATTACK, 1.0F, 1.0F);
+            this.playSound("mob.irongolem.throw", 1.0F, 1.0F);
         } else {
             super.handleHealthUpdate(id);
         }
