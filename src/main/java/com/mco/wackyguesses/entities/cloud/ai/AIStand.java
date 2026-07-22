@@ -11,57 +11,50 @@ import net.minecraft.util.MathHelper;
 
 public class AIStand extends AnimationAI<EntityCloud>{
     protected Animation animation;
+
     protected EntityLivingBase attackTarget;
+
     protected EntityCloud cloud;
 
-    public AIStand(EntityCloud entity, Animation animation) {
-        super(entity);
-        this.setMutexBits(8);
-        this.cloud = entity;
+    public AIStand(EntityCloud cloud, Animation animation) {
+        super(cloud);
+        setMutexBits(8);
+        this.cloud = cloud;
         this.animation = animation;
         this.attackTarget = null;
     }
 
-    @Override
     public Animation getAnimation() {
         return this.animation;
     }
 
-    @Override
     public boolean isAutomatic() {
         return true;
     }
 
-    @Override
     public void startExecuting() {
         super.startExecuting();
         this.cloud.currentAnim = this;
         this.attackTarget = this.cloud.getAttackTarget();
     }
 
-    @Override
     public void updateTask() {
         super.updateTask();
-        if (this.cloud.getAnimationTick() == 1) {
-            // TODO: ADD SOUNDS
-            //  this.cloud.playSound(WackySounds.SCREECH, 1.0F, 1.5F);
-        }
-
-        if (this.attackTarget != null && this.shouldAttack()) {
+        if (this.cloud.getAnimationTick() == 1)
+            this.cloud.playSound("morecreeps:entity.cloud.screech", 1.0F, 1.5F);
+        if (this.attackTarget != null && shouldAttack()) {
             this.cloud.teleportTo(this.attackTarget.posX, this.attackTarget.posY, this.attackTarget.posZ);
             this.attackTarget.hurtResistantTime = 7;
             this.attackTarget.attackEntityFrom(WackyDamages.CLAW, 3.0F);
         }
-
     }
 
     private boolean shouldAttack() {
         int tick = this.cloud.getAnimationTick();
         double distance = this.cloud.getDistanceToEntity(this.attackTarget);
-        return (tick == 19 || tick == 22 || tick == 25 || tick == 28 || tick == 31 || tick == 34) && distance <= 5.0D;
+        return ((tick == 19 || tick == 22 || tick == 25 || tick == 28 || tick == 31 || tick == 34) && distance <= 5.0D);
     }
 
-    @Override
     public void resetTask() {
         super.resetTask();
         this.cloud.currentAnim = null;

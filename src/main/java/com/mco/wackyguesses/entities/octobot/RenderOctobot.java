@@ -1,18 +1,16 @@
 package com.mco.wackyguesses.entities.octobot;
 
-import net.minecraft.client.renderer.entity.RenderTntMinecart;
-import net.minecraft.entity.monster.EntitySpider;
 import org.lwjgl.opengl.GL11;
 
 import com.mco.wackyguesses.Wacky;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 
 @SideOnly(Side.CLIENT)
 public class RenderOctobot extends RenderLiving
@@ -21,8 +19,7 @@ public class RenderOctobot extends RenderLiving
     private static final String MOB_TEXTURE = ":textures/entities/octobot.png";
     private static final ResourceLocation octobotTextures = new ResourceLocation("wackyguesses:textures/entities/tractor_beam.png");
 
-    ModelOctobotLaser modelmatter = new ModelOctobotLaser();
-    ModelOctobot oco = new ModelOctobot();
+    final ModelOctobotLaser modelmatter = new ModelOctobotLaser();
 
     public RenderOctobot() {
         super(new ModelOctobot(), 0.7f);
@@ -42,21 +39,12 @@ public class RenderOctobot extends RenderLiving
 
     protected int shouldRenderPass(EntityOctobot mob, int pass, float timer)
     {
-        if (mob.isInvisible())
-        {
-            GL11.glDepthMask(false);
-        }
-        else
-        {
-            GL11.glDepthMask(true);
-        }
+          GL11.glDepthMask(true);
 
         if (pass == 1 || pass == 2)
         {
             float xOffset = (pass == 1) ? 0.35F : -0.35F;
-            //TODO: WHAT BITS DO WE NEED?
-
-            GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
+            GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS );
             GL11.glPushMatrix();
 
             float f = (float)mob.ticksExisted + timer;
@@ -75,7 +63,7 @@ public class RenderOctobot extends RenderLiving
 
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
-            this.setRenderPassModel(oco);
+            this.setRenderPassModel(this.mainModel);
 
             GL11.glEnable(GL11.GL_BLEND);
             float f4 = 0.5F;
@@ -98,6 +86,7 @@ public class RenderOctobot extends RenderLiving
 
         return -1;
     }
+
 
     protected int inheritRenderPass(EntityOctobot p_77035_1_, int p_77035_2_, float p_77035_3_)
     {

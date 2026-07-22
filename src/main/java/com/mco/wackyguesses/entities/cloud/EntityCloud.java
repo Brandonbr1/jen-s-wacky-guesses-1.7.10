@@ -31,7 +31,7 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
     public static final Animation ANIMATION_STAND = Animation.create(40);
     public static final Animation ANIMATION_POOF = Animation.create(10);
     public static final Animation ANIMATION_DEATH = Animation.create(300);
-    private static final Animation[] ANIMATIONS;
+    private static final Animation[] ANIMATIONS = new Animation[] { ANIMATION_HOVER, ANIMATION_STAND, ANIMATION_POOF, ANIMATION_DEATH };
     public AnimationAI<EntityCloud> currentAnim;
 
 
@@ -64,56 +64,22 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
         return 2;
     }
 
-    @Override
-    public int getAnimationTick() {
-        // TODO Auto-generated method stub
-        return this.animationTick;
-    }
-
-    @Override
-    public void setAnimationTick(int tick) {
-        this.animationTick = tick;
-
-    }
-
-    @Override
-    public Animation getAnimation() {
-        // TODO Auto-generated method stub
-        return this.animation;
-    }
-
-    @Override
-    public void setAnimation(Animation animation) {
-        if (animation == NO_ANIMATION) {
-            this.onAnimationFinish(this.animation);
-            this.setAnimationTick(0);
-        }
-
-        this.animation = animation;
-
-    }
-
-    @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if (this.getAttackTarget() == null) {
+        if (getAttackTarget() == null) {
             List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
             for (EntityPlayer entity : list) {
-                if (entity != null && !entity.capabilities.isCreativeMode) {
-                    this.setAttackTarget(entity);
-                }
+                if (entity != null && !entity.capabilities.isCreativeMode)
+                    setAttackTarget(entity);
             }
         }
-
-        if (this.getAnimation() != NO_ANIMATION) {
-            ++this.animationTick;
-            if (this.worldObj.isRemote && this.animationTick >= this.animation.getDuration()) {
-                this.setAnimation(NO_ANIMATION);
-            }
+        if (getAnimation() != NO_ANIMATION) {
+            this.animationTick++;
+            if (this.worldObj.isRemote && this.animationTick >= this.animation.getDuration())
+                setAnimation(NO_ANIMATION);
         }
-
-        if (this.getAttackTarget() != null && this.currentAnim == null && this.getAnimation() == NO_ANIMATION && this.getAnimation() != ANIMATION_DEATH) {
-            switch((new Random()).nextInt(4)) {
+        if (getAttackTarget() != null && this.currentAnim == null && getAnimation() == NO_ANIMATION && getAnimation() != ANIMATION_DEATH)
+            switch ((new Random()).nextInt(4)) {
                 case 0:
                     AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_HOVER);
                     System.out.println("HOVER");
@@ -125,26 +91,60 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
                 case 2:
                     AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_POOF);
                     System.out.println("POOF");
+                    break;
             }
-        }
-
-        if (this.getAnimation() == ANIMATION_HOVER) {
+        if (getAnimation() == ANIMATION_HOVER)
             this.motionX = this.motionZ = 0.0D;
-        }
-
-        if (this.getAnimation() == ANIMATION_HOVER && this.getAnimationTick() < 35) {
-            for(int i = 0; i < 20; ++i) {
-                // TODO: ANIMATIONS
-                //   this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY + this.getAnimationTick() / 7.5D, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, 0.0D, 0.0D, 0.0D, new int[0]);
-            }
-        }
-
+        if (getAnimation() == ANIMATION_HOVER)
+            if (getAnimationTick() < 35)
+                for (int i = 0; i < 20; i++)
+                    this.worldObj.spawnParticle("snowshovel", this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY +
+                            getAnimationTick() / 7.5D, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, 0.0D, 0.0D, 0.0D);
     }
 
-    public boolean teleportTo(double p_70825_1_, double p_70825_3_, double p_70825_5_) {
-        EnderTeleportEvent event = new EnderTeleportEvent(this, p_70825_1_, p_70825_3_, p_70825_5_, 0);
-        if (MinecraftForge.EVENT_BUS.post(event))
+    public void onUpdate() {
+        super.onUpdate();
+    }
+
+
+    public int getAnimationTick() {
+        return this.animationTick;
+    }
+
+    public void setAnimationTick(int tick) {
+        this.animationTick = tick;
+    }
+
+    public Animation getAnimation() {
+        return this.animation;
+    }
+
+    public void setAnimation(Animation animation) {
+        if (animation == NO_ANIMATION) {
+            onAnimationFinish(this.animation);
+            setAnimationTick(0);
+        }
+        this.animation = animation;
+    }
+
+    public Animation[] getAnimations() {
+        return ANIMATIONS;
+    }
+
+    protected void onAnimationFinish(Animation animation) {}
+
+    @Override
+    protected void onDeathUpdate() {
+        super.onDeathUpdate();
+        AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_DEATH);
+    }
+
+    public boolean teleportTo(double x, double y, double z)
+    {
+        EnderTeleportEvent event = new EnderTeleportEvent(this, x, y, z, 0);
+        if (MinecraftForge.EVENT_BUS.post(event)){
             return false;
+        }
         double d3 = this.posX;
         double d4 = this.posY;
         double d5 = this.posZ;
@@ -156,44 +156,55 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
         int j = MathHelper.floor_double(this.posY);
         int k = MathHelper.floor_double(this.posZ);
 
-        if (this.worldObj.blockExists(i, j, k)) {
+        if (this.worldObj.blockExists(i, j, k))
+        {
             boolean flag1 = false;
 
-            while (!flag1 && j > 0) {
+            while (!flag1 && j > 0)
+            {
                 Block block = this.worldObj.getBlock(i, j - 1, k);
 
-                if (block.getMaterial().blocksMovement()) {
+                if (block.getMaterial().blocksMovement())
+                {
                     flag1 = true;
-                } else {
+                }
+                else
+                {
                     --this.posY;
                     --j;
                 }
             }
 
-            if (flag1) {
+            if (flag1)
+            {
                 this.setPosition(this.posX, this.posY, this.posZ);
 
-                if (this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox)) {
+                if (this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox))
+                {
                     flag = true;
                 }
             }
         }
 
-        if (!flag) {
+        if (!flag)
+        {
             this.setPosition(d3, d4, d5);
             return false;
-        } else {
+        }
+        else
+        {
             short short1 = 128;
 
-            for (int l = 0; l < short1; ++l) {
-                double d6 = l / (short1 - 1.0D);
+            for (int l = 0; l < short1; ++l)
+            {
+                double d6 = (double)l / ((double)short1 - 1.0D);
                 float f = (this.rand.nextFloat() - 0.5F) * 0.2F;
                 float f1 = (this.rand.nextFloat() - 0.5F) * 0.2F;
                 float f2 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-                double d7 = d3 + (this.posX - d3) * d6 + (this.rand.nextDouble() - 0.5D) * this.width * 2.0D;
-                double d8 = d4 + (this.posY - d4) * d6 + this.rand.nextDouble() * this.height;
-                double d9 = d5 + (this.posZ - d5) * d6 + (this.rand.nextDouble() - 0.5D) * this.width * 2.0D;
-                this.worldObj.spawnParticle("portal", d7, d8, d9, f, f1, f2);
+                double d7 = d3 + (this.posX - d3) * d6 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
+                double d8 = d4 + (this.posY - d4) * d6 + this.rand.nextDouble() * (double)this.height;
+                double d9 = d5 + (this.posZ - d5) * d6 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
+                this.worldObj.spawnParticle("portal", d7, d8, d9, (double)f, (double)f1, (double)f2);
             }
 
             this.worldObj.playSoundEffect(d3, d4, d5, "mob.endermen.portal", 1.0F, 1.0F);
@@ -203,18 +214,14 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
     }
 
 
-    protected void onAnimationFinish(Animation animation) {
+    /**  public Animation getDeathAnimation() {
+        return ANIMATION_DEATH;
     }
 
-    @Override
-    public Animation[] getAnimations() {
-        // TODO Auto-generated method stub
-        return ANIMATIONS;
+    protected void onDeathAIUpdate() {
+        if (getAnimation() != ANIMATION_DEATH)
+            AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_DEATH);
     }
-
-
-    static {
-        ANIMATIONS = new Animation[]{ANIMATION_HOVER, ANIMATION_STAND, ANIMATION_POOF, ANIMATION_DEATH};
-    }
+   **/
 
 }

@@ -17,7 +17,6 @@ public class RenderCloud extends RenderLiving
 
     public RenderCloud() {
         super(new ModelCloud(), 0.5f);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
@@ -28,7 +27,6 @@ public class RenderCloud extends RenderLiving
 
     @Override
     protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-        // TODO Auto-generated method stub
         return new ResourceLocation(Wacky.MODID + MOB_TEXTURE);
     }
 

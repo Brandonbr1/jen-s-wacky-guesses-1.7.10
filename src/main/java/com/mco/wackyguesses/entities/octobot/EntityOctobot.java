@@ -41,13 +41,14 @@ public class EntityOctobot extends BasicAgressiveAttackingEntity
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(75);
     }
 
+
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
         if(this.ticksExisted % 50 == 0 && this.shouldRandomize)
         {
-            Random random = this.rand;
+            Random random = new Random();
             this.chargeBonus = random.nextInt(50);
             this.shouldRandomize = false;
         }

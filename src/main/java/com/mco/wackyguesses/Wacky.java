@@ -134,7 +134,7 @@ public class Wacky {
 
         this.addMob(EntityExplodaCow.class, true, "Exploda Cow", 8381573, 935697, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
-        this.addMob(EntityOctobot.class, true, "OctoBot(W.I.P)", 11909308, 1464237, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
+        this.addMob(EntityOctobot.class, true, "OctoBot", 11909308, 1464237, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
         this.addMob(EntityZombieJar.class, true, "Zombie Jar", 3156082, 6000962, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 

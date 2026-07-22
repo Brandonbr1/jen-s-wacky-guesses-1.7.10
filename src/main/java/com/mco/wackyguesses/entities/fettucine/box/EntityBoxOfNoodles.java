@@ -63,7 +63,6 @@ public class EntityBoxOfNoodles extends EntityMob
     }
 
     private void launchNoodleProjectileToCoords(double x, double y, double z) {
-        System.out.println("TRY TO SHOOT");
         double d0 = this.posX;
         double d1 = this.posY + 4.0D;
         double d2 = this.posZ;
