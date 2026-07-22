@@ -13,7 +13,7 @@ public class WackyDamages extends DamageSource
     public static DamageSource dorito  = (new WackyDamages("dorito"));
     public static DamageSource bullet  = (new WackyDamages("bullet"));
     public static DamageSource banana  = (new WackyDamages("banana"));
-    public static DamageSource octobot  = (new WackyDamages("octo"));
+    public static DamageSource octobot  = (new WackyDamages("octobot"));
     public static DamageSource WBARROW = (new WackyDamages("wheelBarrow"));
     public static DamageSource URCHIN = (new WackyDamages("urchin"));
     public static DamageSource SPIKE = (new WackyDamages("spike"));

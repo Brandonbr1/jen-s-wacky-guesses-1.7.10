@@ -1,62 +1,67 @@
 package com.mco.wackyguesses.entities.cloud;
 
-import java.util.List;
-import java.util.Random;
-
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 import com.mco.wackyguesses.entities.cloud.ai.AIHover;
 import com.mco.wackyguesses.entities.cloud.ai.AIPoof;
 import com.mco.wackyguesses.entities.cloud.ai.AIStand;
-import com.mco.wackyguesses.entities.base.BaseBossMob;
-
+import java.util.List;
+import java.util.Random;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationAI;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 
-public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
+public class EntityCloud extends BaseBossMob implements IAnimatedEntity {
+    private Animation animation = NO_ANIMATION;
 
-    private Animation animation;
     private int animationTick;
+
     public static final Animation ANIMATION_HOVER = Animation.create(60);
+
     public static final Animation ANIMATION_STAND = Animation.create(40);
+
     public static final Animation ANIMATION_POOF = Animation.create(10);
-    public static final Animation ANIMATION_DEATH = Animation.create(300);
-    private static final Animation[] ANIMATIONS = new Animation[] { ANIMATION_HOVER, ANIMATION_STAND, ANIMATION_POOF, ANIMATION_DEATH };
+
+    private static final Animation[] ANIMATIONS = new Animation[] { ANIMATION_HOVER, ANIMATION_STAND, ANIMATION_POOF };
+
     public AnimationAI<EntityCloud> currentAnim;
 
-
-    public EntityCloud(World p_i1738_1_) {
-        super(p_i1738_1_);
-        this.animation = NO_ANIMATION;
-        this.setSize(1.3F, 1.5F);
+    public EntityCloud(World world) {
+        super(world);
+        initEntityAI();
+        setSize(1.3F, 1.5F);
         this.experienceValue = 200;
         this.isImmuneToFire = true;
+    }
+
+    protected void initEntityAI() {
         this.tasks.addTask(0, new AIHover(this, ANIMATION_HOVER));
         this.tasks.addTask(0, new AIStand(this, ANIMATION_STAND));
         this.tasks.addTask(0, new AIPoof(this, ANIMATION_POOF));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 32.0F));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
-
     }
 
-    @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.35D);
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(150.0D);
+        getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.35D);
+        getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0D);
+        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(150.0D);
     }
 
     @Override
@@ -64,33 +69,30 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
         return 2;
     }
 
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        if (getAttackTarget() == null) {
-            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
-            for (EntityPlayer entity : list) {
-                if (entity != null && !entity.capabilities.isCreativeMode)
-                    setAttackTarget(entity);
-            }
-        }
+    /** important**/
+    @Override
+    protected boolean isAIEnabled() {
+        return true;
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
         if (getAnimation() != NO_ANIMATION) {
             this.animationTick++;
             if (this.worldObj.isRemote && this.animationTick >= this.animation.getDuration())
                 setAnimation(NO_ANIMATION);
         }
-        if (getAttackTarget() != null && this.currentAnim == null && getAnimation() == NO_ANIMATION && getAnimation() != ANIMATION_DEATH)
+        if (getAttackTarget() != null && this.currentAnim == null && getAnimation() == NO_ANIMATION)
             switch ((new Random()).nextInt(4)) {
                 case 0:
                     AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_HOVER);
-                    System.out.println("HOVER");
                     break;
                 case 1:
                     AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_STAND);
-                    System.out.println("STAND");
                     break;
                 case 2:
                     AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_POOF);
-                    System.out.println("POOF");
                     break;
             }
         if (getAnimation() == ANIMATION_HOVER)
@@ -98,45 +100,31 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
         if (getAnimation() == ANIMATION_HOVER)
             if (getAnimationTick() < 35)
                 for (int i = 0; i < 20; i++)
-                    this.worldObj.spawnParticle("snowshovel", this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY +
+                    this.worldObj.spawnParticle("snowballpoof", this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY +
                             getAnimationTick() / 7.5D, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, 0.0D, 0.0D, 0.0D);
     }
 
-    public void onUpdate() {
-        super.onUpdate();
-    }
-
-
+    @Override
     public int getAnimationTick() {
         return this.animationTick;
     }
 
+    @Override
     public void setAnimationTick(int tick) {
         this.animationTick = tick;
     }
 
+    @Override
     public Animation getAnimation() {
         return this.animation;
     }
 
+    @Override
     public void setAnimation(Animation animation) {
         if (animation == NO_ANIMATION) {
-            onAnimationFinish(this.animation);
             setAnimationTick(0);
         }
         this.animation = animation;
-    }
-
-    public Animation[] getAnimations() {
-        return ANIMATIONS;
-    }
-
-    protected void onAnimationFinish(Animation animation) {}
-
-    @Override
-    protected void onDeathUpdate() {
-        super.onDeathUpdate();
-        AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_DEATH);
     }
 
     public boolean teleportTo(double x, double y, double z)
@@ -213,15 +201,8 @@ public class EntityCloud extends BaseBossMob implements IAnimatedEntity{
         }
     }
 
-
-    /**  public Animation getDeathAnimation() {
-        return ANIMATION_DEATH;
+    @Override
+    public Animation[] getAnimations() {
+        return ANIMATIONS;
     }
-
-    protected void onDeathAIUpdate() {
-        if (getAnimation() != ANIMATION_DEATH)
-            AnimationHandler.INSTANCE.sendAnimationMessage(this, ANIMATION_DEATH);
-    }
-   **/
-
 }

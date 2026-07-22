@@ -23,6 +23,7 @@ public class AIPoof extends AnimationAI<EntityCloud>{
         this.attackTarget = null;
     }
 
+    @Override
     public Animation getAnimation() {
         return this.animation;
     }
@@ -31,12 +32,14 @@ public class AIPoof extends AnimationAI<EntityCloud>{
         return true;
     }
 
+    @Override
     public void startExecuting() {
         super.startExecuting();
         this.cloud.currentAnim = this;
         this.attackTarget = this.cloud.getAttackTarget();
     }
 
+    @Override
     public void updateTask() {
         super.updateTask();
         int tick = this.cloud.getAnimationTick();
@@ -47,6 +50,7 @@ public class AIPoof extends AnimationAI<EntityCloud>{
         }
     }
 
+    @Override
     public void resetTask() {
         super.resetTask();
         this.cloud.currentAnim = null;

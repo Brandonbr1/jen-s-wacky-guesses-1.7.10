@@ -13,6 +13,23 @@ public class BasicAgressiveAttackingEntity extends EntityMob
         super(p_i1738_1_);
     }
 
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if(this.getAttackTarget()==null)
+        {
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0D,32.0D));
+
+            for (int i = 0; i < list.size(); i++) {
+                EntityPlayer entity = list.get(i);
+                if(entity!=null) {
+                    this.setAttackTarget(entity);
+                }
+            }
+        }
+    }
+
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
@@ -26,9 +43,7 @@ public class BasicAgressiveAttackingEntity extends EntityMob
                     this.setAttackTarget(entity);
                 }
             }
-
         }
-
     }
 
     @Override

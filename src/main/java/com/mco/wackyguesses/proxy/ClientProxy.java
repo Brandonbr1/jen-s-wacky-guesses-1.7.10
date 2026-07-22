@@ -63,15 +63,13 @@ import com.mco.wackyguesses.entities.zombieJar.RenderZombieJar;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityCloudFX;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Items;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ClientProxy extends CommonProxy {
+
 
     public ClientProxy() {
         super();

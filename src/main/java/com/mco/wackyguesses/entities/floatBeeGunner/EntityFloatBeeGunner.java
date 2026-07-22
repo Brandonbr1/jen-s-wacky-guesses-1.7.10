@@ -2,6 +2,7 @@ package com.mco.wackyguesses.entities.floatBeeGunner;
 
 import java.util.List;
 
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 import com.mco.wackyguesses.entities.floatBeeGunner.bullet.EntityBullet;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -20,7 +21,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityFloatBeeGunner extends EntityMob implements IBossDisplayData, IRangedAttackMob
+public class EntityFloatBeeGunner extends BaseBossMob implements IRangedAttackMob
 {
 
     public EntityFloatBeeGunner(World p_i1738_1_)
@@ -55,16 +56,6 @@ public class EntityFloatBeeGunner extends EntityMob implements IBossDisplayData,
     public void onLivingUpdate()
     {
         BossStatus.setBossStatus(this, true);
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-            for(EntityPlayer entity : list)
-            {
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-            }
-        }
 
         this.motionY *= 0.8000000238418579D;
 

@@ -7,6 +7,7 @@ import com.mco.wackyguesses.Wacky;
 import com.mco.wackyguesses.entities.bananaBoss.bananaSmall.EntityBananaMinion;
 import com.mco.wackyguesses.entities.bananaBoss.bananaThrowable.EntityBananaThrowable;
 
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,7 +21,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityBanana extends EntityMob implements IBossDisplayData, IRangedAttackMob
+public class EntityBanana extends BaseBossMob implements IRangedAttackMob
 {
 
     public EntityBanana(World p_i1738_1_)
@@ -57,16 +58,6 @@ public class EntityBanana extends EntityMob implements IBossDisplayData, IRanged
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D, 32.0, 32.0));
-            for (int i = 0; i < list.size(); i++) {
-                EntityPlayer entity = list.get(i);
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-            }
-        }
 
         Random rand = this.rand;
         if(rand.nextInt(100) == 1 && !this.worldObj.isRemote)

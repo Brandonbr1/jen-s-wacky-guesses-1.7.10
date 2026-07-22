@@ -24,20 +24,24 @@ public class AIStand extends AnimationAI<EntityCloud>{
         this.attackTarget = null;
     }
 
+    @Override
     public Animation getAnimation() {
         return this.animation;
     }
 
+    @Override
     public boolean isAutomatic() {
         return true;
     }
 
+    @Override
     public void startExecuting() {
         super.startExecuting();
         this.cloud.currentAnim = this;
         this.attackTarget = this.cloud.getAttackTarget();
     }
 
+    @Override
     public void updateTask() {
         super.updateTask();
         if (this.cloud.getAnimationTick() == 1)
@@ -55,6 +59,7 @@ public class AIStand extends AnimationAI<EntityCloud>{
         return ((tick == 19 || tick == 22 || tick == 25 || tick == 28 || tick == 31 || tick == 34) && distance <= 5.0D);
     }
 
+    @Override
     public void resetTask() {
         super.resetTask();
         this.cloud.currentAnim = null;

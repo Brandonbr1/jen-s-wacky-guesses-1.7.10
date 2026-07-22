@@ -37,11 +37,6 @@ public class EntityWheelbarrow extends BasicAgressiveAttackingEntity
     }
 
     @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-    }
-
-    @Override
     public void onCollideWithPlayer(EntityPlayer entityIn)
     {
         if (entityIn != null) {

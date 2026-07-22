@@ -23,31 +23,36 @@ public class AIHover extends AnimationAI<EntityCloud> {
         this.attackTarget = null;
     }
 
+    @Override
     public Animation getAnimation() {
         return this.animation;
     }
 
+    @Override
     public boolean isAutomatic() {
         return true;
     }
 
+    @Override
     public void startExecuting() {
         super.startExecuting();
         this.cloud.currentAnim = this;
         this.attackTarget = this.cloud.getAttackTarget();
     }
 
+    @Override
     public void updateTask() {
         super.updateTask();
         if (this.cloud.getAnimationTick() == 1)
             this.cloud.playSound("wackyguesses:entity.cloud.charge", 1.0F, 0.5F);
         if (this.cloud.getAnimationTick() > 33 && this.attackTarget != null && this.cloud.getAnimationTick() % 2 == 0) {
-           // EntityLightningBolt lightning = new EntityLightningBolt(this.cloud.world, this.attackTarget.posX, this.attackTarget.posY, this.attackTarget.posZ, false);
-           // this.cloud.world.addWeatherEffect((Entity)lightning);
+           EntityLightningBolt lightning = new EntityLightningBolt(this.cloud.worldObj, this.attackTarget.posX, this.attackTarget.posY, this.attackTarget.posZ);
+           this.cloud.worldObj.addWeatherEffect(lightning);
             System.out.println("TEST");
         }
     }
 
+    @Override
     public void resetTask() {
         super.resetTask();
         this.cloud.currentAnim = null;

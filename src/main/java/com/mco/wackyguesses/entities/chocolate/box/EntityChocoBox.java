@@ -3,6 +3,7 @@ package com.mco.wackyguesses.entities.chocolate.box;
 import java.util.List;
 
 import com.mco.wackyguesses.Wacky;
+import com.mco.wackyguesses.entities.base.BaseBossMob;
 import com.mco.wackyguesses.entities.chocolate.rectangle.EntityRectangularChoco;
 import com.mco.wackyguesses.entities.chocolate.sphere.EntitySphericalChoco;
 
@@ -13,7 +14,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public class EntityChocoBox extends EntityMob implements IBossDisplayData
+public class EntityChocoBox extends BaseBossMob
 {
 
     public EntityChocoBox(World p_i1738_1_) {
@@ -47,19 +48,6 @@ public class EntityChocoBox extends EntityMob implements IBossDisplayData
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        if(this.getAttackTarget()==null)
-        {
-            List<EntityPlayer> list = this.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.boundingBox.expand(32.0D,32.0D,32.0D));
-
-            for (int i = 0; i < list.size(); i++) {
-                EntityPlayer entity = list.get(i);
-                if(entity!=null) {
-                    this.setAttackTarget(entity);
-                }
-
-            }
-        }
-
         if(this.ticksExisted % 50 == 0 && !this.worldObj.isRemote)
         {
             if(this.rand.nextInt(2) == 1) {

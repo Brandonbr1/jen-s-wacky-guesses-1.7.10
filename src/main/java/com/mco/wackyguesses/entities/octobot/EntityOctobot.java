@@ -43,8 +43,8 @@ public class EntityOctobot extends BasicAgressiveAttackingEntity
 
 
     @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
+    public void onUpdate() {
+        super.onUpdate();
 
         if(this.ticksExisted % 50 == 0 && this.shouldRandomize)
         {

@@ -39,7 +39,6 @@ public class EntityZombieJar extends BasicAgressiveAttackingEntity implements IB
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-
         if (this.worldObj.isDaytime())
         {
             this.worldObj.setWorldTime(20000L);

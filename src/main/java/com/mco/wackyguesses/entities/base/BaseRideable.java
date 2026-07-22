@@ -1,27 +1,13 @@
 package com.mco.wackyguesses.entities.base;
 
-import com.mco.wackyguesses.Wacky;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 public class BaseRideable extends EntityLiving{
 
@@ -43,12 +29,11 @@ public class BaseRideable extends EntityLiving{
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amm) {
+    public boolean attackEntityFrom(DamageSource source, float amount)
+    {
         Entity entity = source.getEntity();
-        return (this.riddenByEntity == null || !this.riddenByEntity.equals(entity)) && super.attackEntityFrom(source, amm);
-
+        return this.riddenByEntity != null && this.riddenByEntity.equals(entity) ? false : super.attackEntityFrom(source, amount);
     }
-
 
     @Override
     public boolean canBePushed() {
@@ -56,6 +41,9 @@ public class BaseRideable extends EntityLiving{
     }
 
 
+    /**
+     * Called when the mob is falling. Calculates and applies fall damage.
+     */
     @Override
     protected void fall(float p_70069_1_) {
     }
@@ -66,6 +54,7 @@ public class BaseRideable extends EntityLiving{
         return false;
     }
 
+
     @Override
     protected String getDeathSound() {
         return null;
@@ -73,20 +62,10 @@ public class BaseRideable extends EntityLiving{
     }
 
     @Override
-    public boolean canBreatheUnderwater() {
-        return true;
-    }
-
-    @Override
-    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-        super.dropFewItems(wasRecentlyHit, lootingModifier);
-        dropItem(Wacky.bananaMobile, 1);
-    }
-
-    @Override
     protected String getHurtSound() {
         return null;
     }
+
 
     @Override
     protected void applyEntityAttributes() {
@@ -101,31 +80,48 @@ public class BaseRideable extends EntityLiving{
     }
 
     @Override
+    protected float getSoundVolume() {
+        return 0.8F;
+    }
+
+
+    /**
+     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
+     */
+    @Override
     public boolean interact(EntityPlayer p_70085_1_) {
         if (this.riddenByEntity == null) {
                 this.mount(p_70085_1_);
                 return true;
+
         }
             return super.interact(p_70085_1_);
 
+
+
     }
 
-    private void mount(EntityPlayer player) {
-        player.rotationYaw = this.rotationYaw;
-        player.rotationPitch = this.rotationPitch;
+    private void mount(EntityPlayer p_110237_1_) {
+        p_110237_1_.rotationYaw = this.rotationYaw;
+        p_110237_1_.rotationPitch = this.rotationPitch;
 
         if (!this.worldObj.isRemote) {
-            player.mountEntity(this);
+            p_110237_1_.mountEntity(this);
         }
     }
 
 
+    /**
+     * Dead and sleeping entities cannot move
+     */
     @Override
     protected boolean isMovementBlocked() {
         return this.riddenByEntity != null;
     }
 
-
+    /**
+     * Moves the entity based on the specified heading.  Args: strafe, forward
+     */
     @Override
     public void moveEntityWithHeading(float p_70612_1_, float p_70612_2_) {
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
@@ -141,9 +137,9 @@ public class BaseRideable extends EntityLiving{
             }
 
             /**  if (this.onGround && this.jumpPower == 0.0F && this.isRearing() && !this.field_110294_bI) {
-                p_70612_1_ = 0.0F;
-                p_70612_2_ = 0.0F;
-            }
+             p_70612_1_ = 0.0F;
+             p_70612_2_ = 0.0F;
+             }
              **/
 
 
@@ -175,11 +171,17 @@ public class BaseRideable extends EntityLiving{
     }
 
 
+    /**
+     * Returns true if the newer Entity AI code should be run
+     */
     @Override
     protected boolean isAIEnabled() {
         return true;
     }
 
+    /**
+     * returns true if this entity is by a ladder, false otherwise
+     */
     @Override
     public boolean isOnLadder() {
         return false;

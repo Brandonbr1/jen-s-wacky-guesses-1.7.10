@@ -12,19 +12,16 @@ public class EntityBullet extends EntityThrowable
     public EntityBullet(World p_i1777_1_, EntityLivingBase p_i1777_2_)
     {
         super(p_i1777_1_, p_i1777_2_);
-        // TODO Auto-generated constructor stub
     }
 
     public EntityBullet(World p_i1778_1_, double p_i1778_2_, double p_i1778_4_, double p_i1778_6_)
     {
         super(p_i1778_1_, p_i1778_2_, p_i1778_4_, p_i1778_6_);
-        // TODO Auto-generated constructor stub
     }
 
     public EntityBullet(World p_i1776_1_)
     {
         super(p_i1776_1_);
-        // TODO Auto-generated constructor stub
     }
 
     @Override

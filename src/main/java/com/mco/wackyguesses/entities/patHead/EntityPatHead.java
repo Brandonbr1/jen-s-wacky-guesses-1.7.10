@@ -34,9 +34,4 @@ public class EntityPatHead extends BasicAgressiveAttackingEntity
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(15.0D);
     }
-
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-    }
 }

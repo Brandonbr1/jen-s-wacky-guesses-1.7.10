@@ -34,8 +34,10 @@ import com.mco.wackyguesses.entities.zombieJar.EntityZombieJar;
 import com.mco.wackyguesses.handlers.Config;
 import com.mco.wackyguesses.item.ItemBananaKey;
 import com.mco.wackyguesses.item.ItemBananaMobile;
+import com.mco.wackyguesses.item.ItemFloatBeeGunnerGun;
 import com.mco.wackyguesses.item.WackyItemMonsterPlacer;
 import com.mco.wackyguesses.item.WackyList;
+import com.mco.wackyguesses.item.armor.ItemSombrero;
 import com.mco.wackyguesses.proxy.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
@@ -52,8 +54,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = Wacky.MODID, version = Wacky.VERSION, name = Wacky.NAME)
 public class Wacky {
@@ -79,6 +83,10 @@ public class Wacky {
     public static Item rectChoc;
     public static Item sphericalChoc;
 
+    public static Item floatBeeGunnerGun;
+
+    public static Item sunber;;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.load(event);
@@ -94,6 +102,12 @@ public class Wacky {
         rectChoc = new ItemFood(2, 1, false).setUnlocalizedName("item_rectangular_chocolate").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_rectangular_chocolate");
         sphericalChoc = new ItemFood(2, 1, false).setUnlocalizedName("item_spherical_chocolate").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_spherical_chocolate");
 
+        floatBeeGunnerGun = new ItemFloatBeeGunnerGun().setUnlocalizedName("item_gunBee").setCreativeTab(wackyTab).setTextureName(Wacky.MODID_PREFIX + "item_bananamobile");
+
+        ItemArmor.ArmorMaterial material = EnumHelper.addArmorMaterial("useless", 0, new int[]{0, 0, 0, 0}, 0);
+
+        sunber = new ItemSombrero(material, 1, 0);
+
 
         addItemName(monsterSpawner, "Spawn");
         addItemName(itemDorito, "Dorito");
@@ -105,6 +119,8 @@ public class Wacky {
         addItemName(bananaMobile, "Banana Mobile");
         addItemName(rectChoc, "Rectangular Chocolate");
         addItemName(sphericalChoc, "Spherical Chocolate");
+        addItemName(floatBeeGunnerGun, "Gun");
+        addItemName(sunber, "Somberro");
 
         addMob(EntityPatHead.class, true, "Pat's Head", 16724480, 16738816, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.plains);
 
