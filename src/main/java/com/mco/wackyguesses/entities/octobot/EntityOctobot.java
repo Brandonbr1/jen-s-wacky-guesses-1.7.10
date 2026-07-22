@@ -48,7 +48,6 @@ public class EntityOctobot extends BasicAgressiveAttackingEntity
         if(this.ticksExisted % 50 == 0 && this.shouldRandomize)
         {
             Random random = this.rand;
-            //Random random = new Random();
             this.chargeBonus = random.nextInt(50);
             this.shouldRandomize = false;
         }
@@ -62,7 +61,7 @@ public class EntityOctobot extends BasicAgressiveAttackingEntity
                 {
                     if(this.chargeTicks == 11)
                     {
-                        this.playSound("entity.octobot.fire", 1F, 1F);
+                        this.playSound("wackyguesses:entity.octobot.fire", 1F, 1F);
                     }
 
                     if(this.chargeTicks == 55)

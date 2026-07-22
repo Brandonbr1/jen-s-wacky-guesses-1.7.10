@@ -125,7 +125,7 @@ public class EntityFloatBeeGunner extends EntityMob implements IBossDisplayData,
         float f = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
         entityBullet.setThrowableHeading(d1, d2 + f, d3, 1.6F, 7.0F);
            if(ticksExisted % 10 == 0) {
-               this.playSound("entity.float_bee_gunner.fire", .5F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+               this.playSound("wackyguesses:entity.float_bee_gunner.fire", .5F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
            }
         this.worldObj.spawnEntityInWorld(entityBullet);
     }

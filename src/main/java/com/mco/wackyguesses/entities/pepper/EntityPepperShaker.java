@@ -63,7 +63,7 @@ public class EntityPepperShaker extends EntityMob
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
         entityPepper.setThrowableHeading(d1, d2 + f, d3, 1.6F, 6.0F);
-        this.playSound("entity.pepper.fire", 5.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound("wackyguesses:entity.pepper.fire", 5.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityPepper);
     }
 

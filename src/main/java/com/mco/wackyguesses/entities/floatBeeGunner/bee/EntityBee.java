@@ -61,7 +61,7 @@ public class EntityBee extends BasicAgressiveAttackingEntity
     {
         super.onLivingUpdate();
            if(this.ticksExisted % 10 == 0) {
-               this.playSound("entity.float_bee_gunner.ambient", .4F, 1F);
+               this.playSound("wackyguesses:entity.float_bee_gunner.ambient", .4F, 1F);
            }
     }
 
